@@ -1,16 +1,16 @@
 {
-  "name": "Migration demo",
+  "name": "migration-demo",
   "version": "1.0.0",
-  "description": "TVery backend",
+  "description": "Migration helper website.",
   "readme": "README.md",
-  "repository": "https://github.com/DomiR/tvery-backend.git",
+  "repository": "https://github.com/bengy/migration-demo.git",
   "main": "server.js",
   "scripts": {
     "postinstall": "bower install && gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dominique Rau",
-  "license": "ISC",
+  "license": "WTFPL",
   "dependencies": {
 
   },
