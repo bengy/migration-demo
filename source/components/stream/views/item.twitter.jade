@@ -1,0 +1,11 @@
+md-card.st-twitter-card
+	.st-twitter-image
+		img(ng-src="{{item.meta.twitter.data.profileImageUrl}}")
+	.st-twitter-content
+		md-card-title.st-title
+			md-card-title-text(ng-click="isTitleClipped = !isTitleClipped", ng-class="{'st-title-clip': !isTitleClipped}")
+				.md-headline @{{item.meta.twitter.data.author}}
+		md-card-content.st-content
+			div.item-amazon-content
+				.text-wrapper
+					span {{item.meta.twitter.data.text}}

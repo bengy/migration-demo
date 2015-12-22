@@ -1,0 +1,332 @@
+//------------------------------
+//- @author Dominique Rau
+//- @version 0.0.2
+
+
+
+
+
+//------------------------------
+//- Main Menu
+.ui.inverted.main.menu(style="border-radius:0")
+	a.item(ng-href="#/")
+		| TVery Backend
+	a.item(ng-href="#/event-editor")
+		| Events
+	a.item(ng-href="#/stream-editor")
+		| Stream
+	.inverted.right.menu
+		.item
+			.ui.icon.inverted.input
+				input(type='text', ng-model="streamCtrl.data.streamId", placeholder='StreamId')
+		a.item(ng-click="streamCtrl.clickedEditStream()") Connect
+
+
+
+
+
+//------------------------------
+//- Body
+.ui.page.grid
+
+
+
+
+
+	//------------------------------
+	//- Messages
+	//- .one.column.row
+	//- 	.column
+	//- 		.ui.warning.message(ng-hide="streamCtrl.state.websocket.connected")
+	//- 			.header No websocket connection!
+	//- 			| Trying to reconnect...
+
+	//- 		.ui.warning.message(ng-show="streamCtrl.view.warning.parsingError")
+	//- 			i.close.icon(ng-click="streamCtrl.view.warning.parsingError = false")
+	//- 			.header JSON Error
+	//- 			| Could not parse input. Please make sure you don't have any errors in the json object!
+
+	//- 		.ui.warning.message(ng-show="streamCtrl.view.warning.missingStreamIdError")
+	//- 			i.close.icon(ng-click="streamCtrl.view.warning.missingStreamIdError = false")
+	//- 			.header Missing stream ID
+	//- 			| Needs a streamId to connect the item to.
+
+
+
+
+
+	//------------------------------
+	//- Products
+	.two.column.row
+		.column
+			.ui.grid
+
+
+
+
+
+				//------------------------------
+				//- Product items
+				.one.column.row
+					.column
+						h3.ui.dividing.header Product Items
+						.ui.one.fluid.buttons
+							.ui.button(ng-click="streamCtrl.clickedAddProductGeneric()") + Product
+
+
+
+
+
+				//------------------------------
+				//- Add generic product
+				.one.column.row(ng-show="streamCtrl.view.add.product.generic != null", style="margin:10px 0px")
+					.column
+						.ui.raised.form.segment
+							.ui.corner.right.red.label
+								i.close.icon
+							.field
+								label Product item
+								div(ui-ace="{\
+									useWrapMode : true,\
+									showGutter: true,\
+									theme:'twilight',\
+									mode: 'json',\
+								}",
+								ng-model="streamCtrl.view.add.product.generic",
+								style="height:300px")
+							.two.fields
+								.field
+									button.ui.fluid.button(ng-click="streamCtrl.clickedAddProductGenericReset()") Reset
+								.field
+									button.ui.green.fluid.button(ng-click="streamCtrl.clickedAddProductGenericSave()") Save
+
+
+
+
+
+				//------------------------------
+				//- List
+				.one.column.row
+					.column
+						.ui.divided.items
+							.item(ng-repeat="item in streamCtrl.itemService.items.PRODUCT | orderBy:'info.startTimeRelative'")
+								//- .ui.small.image
+									img(src='/images/wireframe/image.png')
+								.content
+									a.header {{item.info.startTimeRelative}}:{{item.info.title}}
+									.meta
+										a {{item.info.type}}
+									.description
+										| Test
+										.ui.right.floated.buttons
+											.ui.mini.button(ng-click="streamCtrl.clickedRemoveItem(item)")
+												| Delete
+											.ui.mini.primary.button
+												| Primary
+												i.right.chevron.icon
+
+										//- .ui.label Limited
+
+
+					//- table.ui.small.compact.celled.definition.table
+					//- 	thead
+					//- 		tr
+					//- 			th.three.wide ItemId
+					//- 			th.one.wide Time
+					//- 			th.eleven.wide Content
+					//- 			th.one.wide
+					//- 	tbody
+					//- 		tr(ng-repeat="item in streamCtrl.data.items.PRODUCT| orderBy:'info.timestamp'")
+					//- 			td {{item.id}}
+					//- 			td {{item.info.startTimeRelative}}
+					//- 			td {{streamCtrl.filterParseItem(item)}}
+					//- 			td
+					//- 				button.ui.red.mini.button(ng-click="streamCtrl.clickedRemoveItem(item)")
+					//- 					i.trash.icon
+					//- 	tfoot.full-width
+					//- 		tr
+					//- 			th
+					//- 			th(colspan='4')
+					//- 				.ui.right.floated.mini.teal.buttons
+					//- 					.ui.button(ng-click="streamCtrl.clickedAddProductGeneric()")
+					//- 						i.add.icon
+					//- 						| Product&nbsp;&nbsp;&nbsp;&nbsp;
+					//- 					.ui.floating.dropdown.icon.button(sui-dropdown)
+					//- 						i.dropdown.icon
+					//- 						.menu
+					//- 							.item(ng-click="streamCtrl.clickedAddProductGeneric()") Generic
+					//- 							.item(ng-click="streamCtrl.view.add.product.byAppleId = !streamCtrl.view.add.product.byAppleId") Song
+					//- 				button.ui.mini.button(ng-click="streamCtrl.view.add.product.byAppleId = !streamCtrl.view.add.product.byAppleId")
+					//- 					| Add by AppleId
+					//- 				.ui.mini.disabled.button
+					//- 					| Delete All
+
+
+
+
+
+				//------------------------------
+				//- Add product with apple id
+				.one.column.row(ng-show="streamCtrl.view.add.product.byAppleId", style="margin:10px 0px")
+					.ui.raised.form.segment
+						.ui.corner.right.red.label(ng-click="streamCtrl.view.add.product.byAppleId = false")
+							i.close.icon
+						.ui.three.fields
+							.field
+								.ui.icon.input
+									input(ng-model="streamCtrl.data.add.product.byAppleId.time", type='number', placeholder='Time')
+							.field
+								.ui.icon.input
+									input(ng-model="streamCtrl.data.add.product.byAppleId.trackId", type='text', placeholder='Apple TrackId...')
+									i.circular.search.icon
+							.field
+								.ui.fluid.green.button(ng-click="streamCtrl.clickedAddProductbyAppleIdSave()") Save
+
+
+
+
+
+		//------------------------------
+		//- Social
+		.column
+			.ui.grid
+
+
+
+
+
+				//------------------------------
+				//- Product items
+				.one.column.row
+					.column
+						h3.ui.dividing.header Social Items
+						.ui.one.fluid.buttons
+							.ui.button(ng-click="streamCtrl.clickedSocialItemAddGeneric()") + Social
+
+
+
+
+
+				//------------------------------
+				//- Add generic product
+				.one.column.row(ng-show="streamCtrl.view.add.social.generic != null", style="margin:10px 0px")
+					.column
+						.ui.raised.form.segment
+							.ui.corner.right.red.label
+								i.close.icon
+							.field
+								label Social item
+								div(ui-ace="{\
+									useWrapMode : true,\
+									showGutter: true,\
+									theme:'twilight',\
+									mode: 'json',\
+								}",
+								ng-model="streamCtrl.view.add.social.generic",
+								style="height:300px")
+							.two.fields
+								.field
+									button.ui.fluid.button(ng-click="streamCtrl.clickedSocialItemAddGenericReset()") Reset
+								.field
+									button.ui.green.fluid.button(ng-click="streamCtrl.clickedSocialItemAddGenericSave()") Save
+
+
+
+
+
+				//------------------------------
+				//- List
+				.one.column.row
+					.column
+						.ui.divided.items
+							.item(ng-repeat="item in streamCtrl.itemService.items.SOCIAL | orderBy:'info.startTimeRelative'")
+						//- .ui.small.image
+							img(src='/images/wireframe/image.png')
+						.content
+							a.header {{item.info.startTimeRelative}}:{{item.info.title}}
+							.meta
+								a {{item.info.type}}
+							.description
+								| Test
+								.ui.right.floated.buttons
+									.ui.mini.button(ng-click="streamCtrl.clickedRemoveItem(item)")
+										| Delete
+									.ui.mini.primary.button
+										| Primary
+										i.right.chevron.icon
+
+		//- .column
+		//- 	.ui.grid
+		//- 		.one.column.row
+		//- 			h3.ui.dividing.header Social Items
+		//- 			table.ui.small.compact.celled.definition.table
+		//- 				thead
+		//- 					tr
+		//- 						th.three.wide ItemId
+		//- 						th.one.wide Time
+		//- 						th.eleven.wide Content
+		//- 						th.one.wide
+		//- 				tbody
+		//- 					tr(ng-repeat="item in streamCtrl.data.items.SOCIAL| orderBy:'info.timestamp'")
+		//- 						td {{item.id}}
+		//- 						td {{item.info.startTimeRelative}}
+		//- 						td {{streamCtrl.filterParseItem(item)}}
+		//- 						td
+		//- 							button.ui.red.mini.button(ng-click="streamCtrl.clickedRemoveItem(item)")
+		//- 								i.trash.icon
+		//- 				tfoot.full-width
+		//- 					tr
+		//- 						th
+		//- 						th(colspan='4')
+		//- 							.ui.right.floated.mini.teal.buttons
+		//- 								.ui.button(ng-click="streamCtrl.clickedSocialItemAddGeneric()")
+		//- 									i.add.icon
+		//- 									| Social Item
+		//- 								.ui.floating.dropdown.icon.button(sui-dropdown)
+		//- 									i.dropdown.icon
+		//- 									.menu
+		//- 										.item(ng-click="streamCtrl.clickedSocialItemAddGeneric()") Generic
+		//- 										//- .item(ng-click="streamCtrl.view.add.social.byTweetId = !streamCtrl.view.add.social.byTweetId") Tweet
+		//- 							.ui.mini.button(ng-click="streamCtrl.view.add.social.byTweetId = !streamCtrl.view.add.social.byTweetId")
+		//- 								| Add by TweetId
+		//- 							.ui.mini.disabled.button
+		//- 								| Delete All
+		//- 		//- Add tweet
+		//- 		.one.column.row(ng-show="streamCtrl.view.add.social.byTweetId")
+		//- 			.ui.raised.form.segment
+		//- 				.ui.corner.right.red.label(ng-click="streamCtrl.view.add.social.byTweetId = false")
+		//- 					i.close.icon
+		//- 				.ui.three.fields
+		//- 					.field
+		//- 						.ui.icon.input
+		//- 							input(ng-model="streamCtrl.data.add.social.byTweetId.time", type='number', placeholder='Time')
+		//- 					.field
+		//- 						.ui.icon.input
+		//- 							input(ng-model="streamCtrl.data.add.social.byTweetId.tweetId", type='text', placeholder='Tweet ID...')
+		//- 							i.circular.search.icon
+		//- 					.field
+		//- 						.ui.fluid.green.button(ng-click="streamCtrl.clickedSocialItemAddByTweetIdSave()") Save
+		//- 		//- Add generic social item
+		//- 		.one.column.row(ng-show="streamCtrl.view.add.social.generic", style="margin:10px 0px")
+		//- 			.ui.raised.form.segment
+		//- 				.ui.corner.right.red.label(ng-click="streamCtrl.view.add.social.generic = false")
+		//- 					i.close.icon
+		//- 				.field
+		//- 					label Product item
+		//- 					div(ui-ace="{\
+		//- 						useWrapMode : true,\
+		//- 						showGutter: true,\
+		//- 						theme:'twilight',\
+		//- 						mode: 'json',\
+		//- 					}",
+		//- 					ng-model="streamCtrl.data.add.social.generic.item",
+		//- 					style="height:300px")
+		//- 				.two.fields
+		//- 					.field
+		//- 						.ui.fluid.button(ng-click="streamCtrl.clickedSocialItemAddGenericReset()") Reset
+		//- 					.field
+		//- 						.ui.green.fluid.button(ng-click="streamCtrl.clickedSocialItemAddGenericSave()") Save
+
+
+
+

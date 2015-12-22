@@ -1,0 +1,230 @@
+div(sui-tabs="item-selection")
+
+
+
+
+
+	//------------------------------
+	//- Menu
+	.ui.top.attached.tabular.menu
+		a.item(sui-tab="generic", title="Generic", ng-click="itemEditorCtrl.clickedSelectTab('generic')")
+		a.item(sui-tab="amazon", title="Amazon", ng-click="itemEditorCtrl.clickedSelectTab('amazon')")
+		a.item(sui-tab="itunes", title="Itunes", ng-click="itemEditorCtrl.clickedSelectTab('itunes_song')")
+		a.item(sui-tab="twitter", title="Twitter", ng-click="itemEditorCtrl.clickedSelectTab('tweet')")
+		a.item(sui-tab="wikipedia", title="Wikipedia", ng-click="itemEditorCtrl.clickedSelectTab('wikipedia')")
+		a.item(sui-tab="tunefind", title="Tunefind", ng-click="itemEditorCtrl.clickedSelectTab('tunefind')")
+		a.item(sui-tab="hashtag", title="Hashtag", ng-click="itemEditorCtrl.clickedSelectTab('hashtag')")
+		a.item(sui-tab="raw", title="Raw", ng-click="itemEditorCtrl.clickedSelectTab('raw')")
+		a.item(sui-tab="debug", title="Debug", ng-click="itemEditorCtrl.clickedSelectTab('debug')")
+
+
+
+
+
+	//------------------------------
+	//- Generic
+	div(sui-pane="generic")
+		form.ui.form
+			.three.fields
+				.field
+					label Title
+					input(type='text', placeholder="Title", ng-model="itemEditorCtrl.streamService.currentItem.info.title")
+				.field
+					label Relative Start Time
+					input(type='number', ng-model="itemEditorCtrl.streamService.currentItem.info.startTimeRelative")
+				.field
+					label Category
+					input(disabled, type='text', placeholder="Category", ng-model="itemEditorCtrl.streamService.currentItem.info.category")
+			//- .field
+				label Relative Start Time
+				.ui.slider.range
+					input(type="range", style="width:100%")
+			.field
+				label Url
+				input(type='text', placeholder="Url", ng-model="itemEditorCtrl.streamService.currentItem.meta.generic.data.url")
+			.field
+				.ui.grid
+					.right.aligned.row
+						.column
+							.ui.small.green.button(ng-click="itemEditorCtrl.clickedSaveGeneric()") Save
+
+
+
+
+
+	//------------------------------
+	//- Amazon
+	div(sui-pane="amazon")
+		form.ui.form
+			.three.fields
+				.field
+					label Title
+					input(type='text', placeholder="Title", ng-model="itemEditorCtrl.streamService.currentItem.info.title")
+				.field
+					label Relative Start Time
+					input(type='number', ng-model="itemEditorCtrl.streamService.currentItem.info.startTimeRelative")
+				.field
+					label Category
+					input(disabled, type='text', placeholder="Category", ng-model="itemEditorCtrl.streamService.currentItem.info.category")
+			//- .field
+				label Relative Start Time
+				.ui.slider.range
+					input(type="range", style="width:100%")
+			.ui.divider
+			.field
+				label By Amazon Item Number
+				input(type='text', placeholder="Amazon IBAN", ng-model="itemEditorCtrl.streamService.currentItem.meta.amazon.ref")
+
+			.field
+				.ui.grid
+					.right.aligned.row
+						.column
+							.ui.small.button(ng-click="itemEditorCtrl.clickedFetchAmazon()") Fetch
+							.ui.small.green.button(ng-if="itemEditorCtrl.streamService.currentItem.meta.amazon.data", ng-click="itemEditorCtrl.clickedSaveAmazon()") Save
+
+
+			.ui.horizontal.divider or
+			.field
+				label By Amazon Search
+				div(amazon-segment)
+
+
+
+
+
+	//------------------------------
+	//- Itunes
+	div(sui-pane="itunes")
+		form.ui.form
+			.three.fields
+				.field
+					label Title
+					input(type='text', placeholder="Title", ng-model="itemEditorCtrl.streamService.currentItem.info.title")
+				.field
+					label Relative Start Time
+					input(type='number', ng-model="itemEditorCtrl.streamService.currentItem.info.startTimeRelative")
+				.field
+					label Category
+					input(disabled, type='text', placeholder="Category", ng-model="itemEditorCtrl.streamService.currentItem.info.category")
+			//- .field
+				label Relative Start Time
+				.ui.slider.range
+					input(type="range", style="width:100%")
+			.field
+				label Itunes German Track Number
+				input(type='text', placeholder="Itunes Track Number", ng-model="itemEditorCtrl.streamService.currentItem.meta.itunes.ref")
+			.field
+				.ui.grid
+					.right.aligned.row
+						.column
+							.ui.mini.button(ng-click="itemEditorCtrl.clickedFetchItunes()") Fetch
+							.ui.green.mini.button(ng-if="itemEditorCtrl.streamService.currentItem.meta.itunes.data", ng-click="itemEditorCtrl.clickedSaveItunes()") Save
+
+
+
+
+
+	//------------------------------
+	//- Twitter
+	div(sui-pane="twitter")
+		form.ui.form
+			.three.fields
+				.field
+					label Title
+					input(type='text', placeholder="Title", ng-model="itemEditorCtrl.streamService.currentItem.info.title")
+				.field
+					label Relative Start Time
+					input(type='number', ng-model="itemEditorCtrl.streamService.currentItem.info.startTimeRelative")
+				.field
+					label Category
+					input(disabled, type='text', placeholder="Category", ng-model="itemEditorCtrl.streamService.currentItem.info.category")
+			//- .field
+				label Relative Start Time
+				.ui.slider.range
+					input(type="range", style="width:100%")
+			.field
+				label Twitter Status ID
+				input(type='text', placeholder="Status ID", ng-model="itemEditorCtrl.streamService.currentItem.meta.twitter.ref")
+			.field
+				.ui.grid
+					.right.aligned.row
+						.column
+							.ui.mini.button(ng-click="itemEditorCtrl.clickedFetchTwitter()") Fetch
+							.ui.green.mini.button(ng-if="itemEditorCtrl.streamService.currentItem.meta.twitter.data", ng-click="itemEditorCtrl.clickedSaveTwitter()") Save
+
+
+
+
+
+	//------------------------------
+	//- Wikipedia
+	div(sui-pane="wikipedia")
+		form.ui.form
+			.three.fields
+				.field
+					label Title
+					input(type='text', placeholder="Title", ng-model="itemEditorCtrl.streamService.currentItem.info.title")
+				.field
+					label Relative Start Time
+					input(type='number', ng-model="itemEditorCtrl.streamService.currentItem.info.startTimeRelative")
+				.field
+					label Category
+					input(disabled, type='text', placeholder="Category", ng-model="itemEditorCtrl.streamService.currentItem.info.category")
+			//- .field
+				label Relative Start Time
+				.ui.slider.range
+					input(type="range", style="width:100%")
+			.field
+				label Wikipedia Url
+				input(type='text', placeholder="Wikipedia Url", ng-model="itemEditorCtrl.streamService.currentItem.meta.wikipedia.ref")
+			.field
+				.ui.grid
+					.right.aligned.row
+						.column
+							.ui.mini.button(ng-click="itemEditorCtrl.clickedFetchWikipedia()") Fetch
+							.ui.green.mini.button(ng-if="itemEditorCtrl.streamService.currentItem.meta.wikipedia.data", ng-click="itemEditorCtrl.clickedSaveWikipedia()") Save
+
+
+
+
+
+	//------------------------------
+	//- Tunefind
+	div(sui-pane="tunefind")
+		div(tunefind-segment)
+
+
+
+
+
+	//------------------------------
+	//- Hashtag
+	div(sui-pane="hashtag")
+		div(twitter-segment)
+
+
+
+
+
+	//------------------------------
+	//- Raw
+	div(sui-pane="raw")
+		form.ui.form
+			.field
+				div(ui-ace, ng-model="itemEditorCtrl.streamService.currentItemJsonString", style="height:300px")
+			.field
+				.ui.grid
+					.right.aligned.row
+						.column
+							.ui.green.mini.button(ng-click="itemEditorCtrl.clickedSaveRaw()") Save
+
+
+
+
+
+	//------------------------------
+	//- Debug
+	div(sui-pane="debug")
+		form.ui.form
+			.field
+				div(ui-ace, readonly, ng-model="itemEditorCtrl.itemJsonString", style="height:300px")

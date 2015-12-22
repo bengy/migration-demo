@@ -1,0 +1,18 @@
+//------------------------------
+//- @author Dominique Rau
+//- @version 0.0.2
+
+
+
+
+
+//------------------------------
+//- Channel List
+md-list
+	md-list-item.md-3-line(ng-repeat='channel in channelListCtrl.channelListService.storage.tvChannelList', ng-click="channelListCtrl.clickedChannel(channel)")
+		img.md-avatar(ng-src='{{"/images/logos/" + channel.info.logoUrl}}', alt='{{channel.info.name}}')
+		.md-list-item-text
+			h3 {{channel.info.name}}
+			i Kanal: {{channel.id}}
+		md-divider(md-inset='', ng-if='!$last')
+

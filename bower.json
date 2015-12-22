@@ -1,0 +1,39 @@
+{
+  "name": "flickstuff",
+  "version": "0.3.0",
+  "main": "build/js/index.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "1.5.0-rc.0",
+    "angular-resource": "1.5.0-rc.0",
+    "angular-route": "1.5.0-rc.0",
+    "angular-cookies": "1.5.0-rc.0",
+    "angular-google-maps": "~2.1.5",
+    "angular-animate": "1.5.0-rc.0",
+    "lodash": "~3.10.0",
+    "angular-sanitize": "1.5.0-rc.0",
+    "angular-ws": "~1.1.0",
+    "tiny-emitter": "~1.0.0",
+    "ngstorage": "~0.3.4",
+    "restangular": "~1.5.1",
+    "angular-filter": "~0.5.7",
+    "jquery-address": "*",
+    "angular-material": "~0.11.4",
+    "moment": "~2.10.6",
+    "ng-embed": "~2.0.3",
+    "angular-bluebird-promises": "~0.6.3",
+    "angular-aria": "~1.4.8",
+    "material-design-iconsets": "nkoterba/material-design-iconsets",
+    "jquery-scrollintoview": "litera/jquery-scrollintoview",
+    "material-design-icons": "~2.1.1"
+  },
+  "resolutions": {
+    "angular": "1.4.8",
+    "angular-sanitize": "1.5.0-rc.0"
+  }
+}

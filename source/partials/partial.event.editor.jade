@@ -1,0 +1,110 @@
+//------------------------------
+//- @author Dominique Rau
+//- @version 0.0.2
+
+
+
+
+
+//------------------------------
+//- Menu
+div(tellyb-menu)
+
+
+
+
+
+//------------------------------
+//- Selected event
+.ui.page.grid
+	.one.column.row(style="margin-top:10px")
+		.column
+			.ui.segments
+
+
+
+
+
+				//------------------------------
+				//- Header
+				h2.ui.top.attached.header Event: &nbsp;
+					i {{eventCtrl.eventService.storage.selectedEvent.id}}
+
+				.ui.segment
+					.ui.equal.height.grid
+						.row
+							.four.wide.column
+								img.ui.medium.image(
+									ng-src="{{eventCtrl.eventService.storage.selectedEventShow.info.imageUrl}}",
+									style="height:200px;width:200px;margin-top:0")
+							.eleven.wide.column(style="align-self:center")
+								h1.ui.header(style="margin-bottom:0; cursor:pointer", ng-click="eventCtrl.clickedShow(eventCtrl.eventService.storage.selectedEvent)") {{eventCtrl.eventService.storage.selectedEventShow.info.title}}
+
+								a(ng-click="eventCtrl.clickedCollection(eventCtrl.eventService.storage.selectedEvent)", style="cursor:pointer")
+									i(style="", ng-if="eventCtrl.eventService.storage.selectedEventShow.meta.kabeldeutschland.relay") (Staffel {{eventCtrl.eventService.storage.selectedEventShow.meta.kabeldeutschland.relay}} -&nbsp;
+
+								i(style="", ng-if="(!eventCtrl.eventService.storage.selectedEventShow.meta.kabeldeutschland.relay) && eventCtrl.eventService.storage.selectedEventShow.meta.kabeldeutschland.series_number") (
+
+								a(ng-click="eventCtrl.clickedShow(eventCtrl.eventService.storage.selectedEvent)", style="cursor:pointer")
+									i(style="", ng-if="eventCtrl.eventService.storage.selectedEventShow.meta.kabeldeutschland.series_number") Episode {{eventCtrl.eventService.storage.selectedEventShow.meta.kabeldeutschland.series_number}})
+								p(style=";margin-top:1em")
+									b Zeit
+									| {{eventCtrl.eventService.storage.selectedEventShow.meta.kabeldeutschland.start_time}} - {{eventCtrl.eventService.storage.selectedEventShow.meta.kabeldeutschland.end_time}}
+								p(style=";text-overflow: ellipsis;display: block;overflow: hidden;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;", ng-bind-html="eventCtrl.eventService.storage.selectedEventShow.info.descriptionLong")
+							.two.wide.column
+
+
+
+
+
+				//------------------------------
+				//- Header
+				.ui.segment(ng-show="eventCtrl.view.itemEditorIsEnabled")
+					.ui.grid
+						.middle.aligned.two.column.row
+							.column
+								h3.ui.header Item Editor
+							.right.aligned.column
+								.ui.small.blue.basic.icon.button(ng-click="eventCtrl.view.itemEditorIsEnabled = false") Hide
+						.one.column.row
+							.column
+								div(item-editor-segment)
+
+
+
+
+
+				//------------------------------
+				//- Products
+				.ui.segment
+					.ui.grid
+						.middle.aligned.two.column.row
+							.column
+								h3.ui.header Event Stream
+							.right.aligned.column
+								.ui.small.blue.basic.icon.button(ng-click="eventCtrl.clickedAddItem()") Add Item
+						.one.column.row
+							.column
+								p(ng-show="eventCtrl.streamService.storage.items.length <= 0") Empty stream
+								table.ui.small.compact.celled.table(ng-show="eventCtrl.streamService.storage.items.length > 0")
+									thead
+										tr
+											th.two.wide UUID
+											th.eleven.wide Title
+											th.one.wide Time
+											th.two.wide Actions
+									tbody
+										tr(ng-repeat="item in eventCtrl.streamService.storage.items")
+											td {{item.id | truncate: 9: "..."}}
+											td {{item.info.title}}
+											td {{item.info.startTimeRelative}}
+											td
+												.ui.two.mini.buttons
+													.ui.mini.red.button(ng-click="eventCtrl.clickedDeleteItem(item)")
+														| Delete
+													.ui.mini.button(ng-click="eventCtrl.clickedEditItem(item)")
+														| Edit
+
+
+
+

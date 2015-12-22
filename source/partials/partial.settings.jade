@@ -1,0 +1,24 @@
+
+
+
+
+.ui.inverted.green.stackable.menu(style="border-radius:0px")
+
+	a.item(ng-href="#/")
+		i.arrow.left.icon
+		| Back
+
+	.right.item Save
+
+.ui.page.grid
+	.row
+		.column
+			h1 Settings
+
+	.row
+		.column
+			.ui.segment
+				h3 Events
+
+				.ui.button(ng-click="settingsCtrl.clickedFetchEvents()", ng-class="{loading:settingsCtrl.view.scraping, disabled:settingsCtrl.view.scraping}")
+					| Fetch events

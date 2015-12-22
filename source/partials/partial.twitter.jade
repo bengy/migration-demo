@@ -1,0 +1,29 @@
+
+h4.ui.heading
+	| Twitter
+	.ui.right.floated.mini.buttons
+		.ui.button(ng-click="twitterCtrl.loadSeries()") Load
+
+table.ui.small.celled.table(ng-if="twitterCtrl.isTwitterActive")
+
+	thead
+		tr
+			th.thirteen.wide Title
+			th.three.wide Info
+	tbody
+		tr(ng-repeat-start="hashtag in twitterCtrl.eventService.storage.hashtags")
+			td
+				h5.ui.heading(ng-click="twitterCtrl.clickedLoadHashtagTweets(hashtag)", style="cursor:pointer")
+					i.chevron.icon(ng-class="{right:!hashtag.isActive, down:hashtag.isActive}")
+					| {{hashtag.title}}
+			td
+				.ui.fluid.mini.button(ng-click="twitterCtrl.clickedLoadHashtagTweets(hashtag)") Search
+		tr(ng-repeat="tweet in hashtag.tweets", ng-if="hashtag.isActive")
+			td.thirteen.wide
+				.content(style="margin-left:6em")
+					h5.ui.heading(style="display:inline-block; margin-bottom:0") {{tweet.user.name}} - {{tweet.text}} &nbsp;
+
+			td.three.wide
+				.ui.fluid.mini.green.button(ng-click="twitterCtrl.clickedAddTweet(tweet)") Add
+		tr(ng-repeat-end, ng-hidden="true")
+		tr(ng-repeat-end, ng-hidden="true")

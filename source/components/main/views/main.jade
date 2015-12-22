@@ -1,0 +1,68 @@
+//------------------------------
+//- @author Dominique Rau
+//- @version 0.0.2
+
+
+
+
+
+//------------------------------
+//- Toolbar
+md-toolbar#tv-toolbar
+	.md-toolbar-tools
+		//- md-button.md-icon-button(aria-label='Settings')
+		//- 	md-icon.material-icons menu
+		h2
+			b FlickSTUFF
+		span(flex)
+		//- md-button.md-icon-button(aria-label='Detect')
+		//- 	md-icon.material-icons surround_sound
+			//- md-icon(md-svg-icon='img/icons/favorite.svg', style='color: greenyellow;')
+		md-button.md-icon-button(aria-label='Search', href="")
+			md-icon.material-icons search
+
+
+
+
+
+//------------------------------
+//- Tabs
+md-tabs.md-primary#tv-tabs(md-selected='1', md-align-tabs="top", md-stretch-tabs, md-center-tabs, tabs-flexible-height)
+
+
+
+
+
+	//------------------------------
+	//- Favrourits
+	md-tab(flex, layout="column", layout-fill)
+		md-tab-label Favoriten
+		md-tab-body
+			mg-content(layout-inset)
+				p Coming soon.
+
+
+
+
+
+	//------------------------------
+	//- Hilights
+	md-tab
+		md-tab-label Hilights
+		md-tab-body
+			mg-content(layout-inset)
+				p Coming soon.
+
+
+
+
+
+	//------------------------------
+	//- Channel selection
+	md-tab
+		md-tab-label Kanäle
+		md-tab-body
+			mg-content(layout-inset)
+				p Coming soon.
+
+

@@ -1,0 +1,59 @@
+//------------------------------
+//- @author Dominique Rau
+//- @version 0.0.2
+
+
+
+
+
+//------------------------------
+//- Style
+link(rel='stylesheet', href='/components/browser/views/browser.css')
+
+
+
+
+
+//------------------------------
+//- Toolbar
+.br-wrapper
+
+
+
+
+
+	//------------------------------
+	//- Toolbar
+	.br-toolbar
+		md-toolbar
+			.md-toolbar-tools
+				md-button.md-icon-button(aria-label='Main', ng-click="browserCtrl.clickedBack()")
+					md-icon.material-icons arrow_back
+				h2(md-header-title)
+					b {{browserCtrl.browserService.url | baseUrl}}
+				span(flex)
+					//- md-icon(md-svg-icon='img/icons/favorite.svg', style='color: greenyellow;')
+				md-button.md-icon-button(aria-label='Share')
+					md-icon.material-icons share
+
+
+
+
+
+	//------------------------------
+	//- Content
+	iframe.br-content(ng-src="{{browserCtrl.trustSource(browserCtrl.browserService.url)}}")
+
+
+
+
+
+	//------------------------------
+	//- Footer
+	md-content(layout-padding)
+		div(layout="row")
+			md-button.md-warn(aria-label='Main') Report
+			div(flex)
+			md-button.md-whiteframe-1dp(aria-label='Main', ng-href="{{browserCtrl.browserService.url}}", target="_blank")
+				md-icon.material-icons launch
+				| &nbsp; Open in new Tab

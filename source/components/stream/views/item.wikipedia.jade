@@ -1,0 +1,10 @@
+md-card
+	md-card-title.st-title
+		md-card-title-text(ng-click="isTitleClipped = !isTitleClipped", ng-class="{'st-title-clip': !isTitleClipped}")
+			.md-headline {{item.meta.wikipedia.data.title}}
+	md-card-content.st-content
+		div.item-amazon-content
+			.image-wrapper(ng-if="item.meta.wikipedia.data.mediaImageUrl.slice(-9) != 'undefined'")
+				img(ng-src="{{item.meta.wikipedia.data.mediaImageUrl}}")
+			.text-wrapper
+				span {{item.meta.wikipedia.data.descriptionHtml}}

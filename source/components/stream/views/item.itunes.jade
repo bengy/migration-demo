@@ -1,0 +1,11 @@
+md-card
+	md-card-title.st-title
+		md-card-title-text(ng-click="isTitleClipped = !isTitleClipped", ng-class="{'st-title-clip': !isTitleClipped}")
+			.md-headline {{item.meta.itunes.data.title}}
+	md-card-content.st-content
+		div.item-amazon-content
+			.image-wrapper
+				img(ng-src="{{item.meta.itunes.data.itemImageUrl}}")
+				p {{item.meta.itunes.data.price | priceFromCents}}
+			.text-wrapper
+				span {{item.meta.itunes.data.artist}}

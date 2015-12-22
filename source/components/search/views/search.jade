@@ -1,0 +1,40 @@
+//------------------------------
+//- @author Dominique Rau
+//- @version 0.0.2
+
+
+
+
+
+//------------------------------
+//-
+div
+	md-content
+		md-toolbar
+			.md-toolbar-tools
+
+				md-button.md-icon-button(aria-label='Detect', ng-click="searchCtrl.clickedBack()")
+					md-icon.material-icons arrow_back
+
+				form(ng-submit='$event.preventDefault()', flex="")
+					md-autocomplete(
+						ng-disabled='searchCtrl.isDisabled',
+						md-no-cache='searchCtrl.noCache',
+						md-selected-item='searchCtrl.selectedItem',
+						md-search-text-change='searchCtrl.searchTextChange(searchCtrl.searchText)',
+						md-search-text='searchCtrl.searchText',
+						md-selected-item-change='searchCtrl.selectedItemChange(item)',
+						md-items='item in searchCtrl.querySearch(searchCtrl.searchText)',
+						md-item-text='item.display',
+						md-min-length='0',
+						placeholder='Nach was schaust du?')
+						md-item-template
+							span(md-highlight-text='searchCtrl.searchText', md-highlight-flags='^i') {{item.display}}
+						//- md-not-found No shows matching "{{searchCtrl.searchText}}" were found.
+						//- 	a(ng-click='searchCtrl.newState(searchCtrl.searchText)') Create a new one!
+
+				md-button.md-icon-button(aria-label='Search')
+					md-icon.material-icons search
+
+		//- div(fingerprint-component)
+

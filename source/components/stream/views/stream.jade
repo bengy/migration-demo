@@ -1,0 +1,47 @@
+//------------------------------
+//- @author Dominique Rau
+//- @version 0.0.2
+
+
+
+
+
+//------------------------------
+//- Style
+link(rel='stylesheet', href='/components/stream/views/stream.css')
+
+
+
+
+
+//------------------------------
+//- Itemlist
+md-content
+	md-list
+		md-item(ng-repeat='item in streamCtrl.streamService.stream')
+
+			div.st-item-draggable(draggable-item,ng-if="item.info.type === 'GENERIC'", on-click="streamCtrl.clickedGeneric(item)", on-drag-right="streamCtrl.draggedRight(item)")
+				.st-item-heart
+					md-icon.material-icons favorite
+				div.st-item(item-generic, item="item")
+				.st-item-cross
+			div.st-item-draggable(draggable-item,ng-if="item.info.type === 'TWEET'", on-click="streamCtrl.clickedTweet(item)")
+				.st-item-heart
+					md-icon.material-icons favorite
+				div.st-item(item-twitter,item="item")
+				.st-item-cross
+			div.st-item-draggable(draggable-item,ng-if="item.info.type === 'AMAZON'", on-click="streamCtrl.clickedAmazon(item)")
+				.st-item-heart
+					md-icon.material-icons favorite
+				div.st-item(item-amazon,item="item")
+				.st-item-cross
+			div.st-item-draggable(draggable-item,ng-if="item.info.type === 'WIKIPEDIA'", on-click="streamCtrl.clickedWikipedia(item)")
+				.st-item-heart
+					md-icon.material-icons favorite
+				div.st-item(item-wikipedia, item="item")
+				.st-item-cross
+			div.st-item-draggable(draggable-item,ng-if="item.info.type === 'ITUNES_SONG'", on-click="streamCtrl.clickedItunes(item)")
+				.st-item-heart
+					md-icon.material-icons favorite
+				div.st-item(item-itunes, item="item")
+				.st-item-cross

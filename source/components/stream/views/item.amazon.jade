@@ -1,0 +1,11 @@
+md-card
+	md-card-title.st-title
+		md-card-title-text(ng-click="isTitleClipped = !isTitleClipped", ng-class="{'st-title-clip': !isTitleClipped}")
+			.md-headline {{item.meta.amazon.data.title}}
+	md-card-content.st-content
+		div.item-amazon-content
+			.image-wrapper
+				img(ng-src="{{item.meta.amazon.data.itemImageUrl}}")
+				p {{item.meta.amazon.data.price | priceFromCents}}
+			.text-wrapper
+				span {{item.meta.amazon.data.description}}
