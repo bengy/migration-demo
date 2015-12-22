@@ -11,7 +11,7 @@
 # Title
 # ------------------------------
 # Declare app level module which depends on filters, and services
-flickstuff = angular.module "flickstuff", ["ngRoute", "ngSanitize", "ui.ace", "ws", "ui.semantic", "ngStorage", "infinite-scroll", "restangular", "angular.filter", "mwl.bluebird", "ngMaterial"]
+flickstuff = angular.module "flickstuff", ["ngRoute", "ngSanitize", "ws", "ui.semantic", "ngStorage", "restangular", "angular.filter", "mwl.bluebird", "ngMaterial"]
 
 
 

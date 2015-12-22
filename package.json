@@ -15,6 +15,7 @@
     "express": "^4.13.3"
   },
   "devDependencies": {
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-accord": "^0.2.0",
     "gulp-cached": "^1.1.0",
@@ -30,6 +31,7 @@
     "gulp-typescript": "^2.10.0",
     "gulp-util": "^3.0.7",
     "gulp-wait": "0.0.2",
-    "gulp-watch": "^4.3.5"
+    "gulp-watch": "^4.3.5",
+    "nib": "^1.1.0"
   }
 }
