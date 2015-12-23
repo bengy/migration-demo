@@ -1,0 +1,50 @@
+//------------------------------
+//- @author Dominique Rau
+//- @version 0.0.2
+
+
+
+
+
+//------------------------------
+//- Style
+link(rel='stylesheet' href='/components/browser/views/browser.css')
+
+
+
+
+
+//------------------------------
+//- Toolbar
+.br-wrapper
+
+
+
+
+
+	//------------------------------
+	//- Toolbar
+	.br-toolbar
+		md-toolbar
+			.md-toolbar-tools
+				h2(md-header-title)
+					b Login
+
+
+
+
+
+	//------------------------------
+	//- Footer
+	md-content(layout-padding layout-fill)
+		.md-inline-form(layout="column" layout-fill)
+			div(flex=50 layout="column" layout-align="center center")
+				md-content(md-theme='docs-dark' layout='row', style="width:80%")
+					md-input-container(layout-fill)
+						label Name
+						input(ng-model='loginCtrl.name')
+
+
+				md-button.md-raised(aria-label='Login' ng-click="loginCtrl.clickedLogin()") Login
+			div(flex=50)
+

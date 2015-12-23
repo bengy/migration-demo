@@ -14,16 +14,21 @@ angular.module "flickstuff"
 	class MainController
 
 		# Injection annotation for minimization
-		@$inject: ["$location", "$timeout", "$log", "$scope", "$http"]
+		@$inject: ["$location", "$timeout", "$log", "$scope", "$http", "LoginService", "$rootScope"]
 
 		# Constructor
-		constructor: (@location, @timeout, @log, @scope, @http) ->
+		constructor: (@location, @timeout, @log, @scope, @http, @loginService, @rootScope) ->
 			console.log "Main controller init"
 
 
 
 
 
+		# Clickhandler
+		# ------------------------------
+		clickedLogout: =>
+			@loginService.logout()
+			@location.path "/login"
 
 
 

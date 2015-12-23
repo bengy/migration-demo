@@ -29,6 +29,20 @@ flickstuff = angular.module "flickstuff", ["ngRoute", "ngSanitize", "ws", "ui.se
 
 
 
+# Redirect to auth if username not set
+# ------------------------------
+flickstuff.run [ "$rootScope", "$location", ($rootScope, $location) ->
+	$rootScope.$on "$routeChaneStart", (ev, next, curr) ->
+		if next.$$route
+			user = $rootScope.user
+			auth = next.$$route.auth
+			unless auth?(user) then $location.path "/login"
+]
+
+
+
+
+
 # App configuration
 # ------------------------------
 flickstuff.config ["$routeProvider", "$locationProvider", "$mdIconProvider", "$mdThemingProvider", "$httpProvider"
@@ -63,11 +77,18 @@ flickstuff.config ["$routeProvider", "$locationProvider", "$mdIconProvider", "$m
 
 		$routeProvider
 
+			.when "/login",
+				templateUrl: "/components/login/views/login.html"
+				controller: "LoginController"
+				controllerAs: "loginCtrl"
+
 			# Main view
 			.when "/",
 				templateUrl: "/components/main/views/main.html"
 				controller: "MainController"
 				controllerAs: "mainCtrl"
+				auth: (user)->
+					return user?.name?
 
 			# Catch rest
 			.otherwise({redirectTo: "/"})
