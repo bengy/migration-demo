@@ -32,7 +32,7 @@ import {Observable} from "rxjs/Observable"
 // Channel event list
 // ------------------------------
 @Page({
-	templateUrl: 'build/pages/word-list-page/word-list-page.html',
+	templateUrl: 'build/pages/tab1-events-page/events-page.html',
 	// providers:[EventService, WordStreamService],
 	// pipes:[EventTimePipe],
 	directives: [COMMON_DIRECTIVES]

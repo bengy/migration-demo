@@ -31,7 +31,7 @@ import {Observable} from "rxjs/Observable"
 // Page
 // ------------------------------
 @Page({
-	templateUrl: 'build/pages/search-page/search-page.html',
+	templateUrl: 'build/pages/tab2-chat-page/chat-page.html',
 	directives: [COMMON_DIRECTIVES]
 	// pipes: [EventTimePipe],
 	// providers: [SearchService]
