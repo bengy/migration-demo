@@ -4,6 +4,12 @@
 
 GET     /                           controllers.Application.index()
 
+#Events
+GET		/api/v1/events				controllers.Application.events()
+
+#Users
+GET		/api/v1/users				controllers.Application.users()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file               		controllers.Assets.at(path="/public/www", file)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
