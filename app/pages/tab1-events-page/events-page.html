@@ -1,38 +1,14 @@
 <ion-navbar *navbar>
-	<ion-title>{{channelEvent?.info?.title}}</ion-title>
-	<!--<ion-buttons end>
-		<button (click)="clickedChaneDate()">
-			Datum
-		</button>
-	</ion-buttons>-->
+	<ion-title>Events</ion-title>
 </ion-navbar>
 
-<ion-content padding class="event-word-list">
-<!-- 	<div class="wordlist-container">
-		<div class="wordlist">
-			<div class="word" *ngFor="#word of currentPage?.words; #last = last" (click)="clickedWord(word)">
-				<div class="word-container">
-					<h2>{{word?.word}}</h2>
-				</div>
-				<div class="word-line" *ngIf="!last">
-					<div class="line-space"></div>
-					<div class="line-left"></div>
-					<div class="line-symbol"></div>
-					<div class="line-right"></div>
-					<div class="line-space"></div>
-				</div>
-			</div>
-		</div>
-		<div class="wordlist-navigation">
-			<button clear (click)="clickedPreviousPage()" [disabled]="isPreviousPageButtonDisabled()">
-				<ion-icon ios="ios-arrow-back" md="md-arrow-dropleft"></ion-icon>
-			</button>
-			<div class="current-page">
-				{{currentPage?.startTimeRelativeInMinutes}}'
-			</div>
-			<button clear (click)="clickedNextPage()" [disabled]="isNextPageButtonDisabled()">
-				<ion-icon ios="ios-arrow-forward" md="md-arrow-dropright"></ion-icon>
-			</button>
-		</div>
-	</div> -->
+<ion-content padding class="events-page">
+	<div style="display: flex;flex-direction: column;justify-content: center; align-items: center;">
+		<h2>Willkommen!</h2>
+		<p>
+			This site is under construction.
+			Diese Seite befindet sich noch im Aufbau.
+		</p>
+		<img src="/img/placeholder.construction.png">
+	</div>
 </ion-content>

@@ -26,7 +26,7 @@ import {Page, NavController} from 'ionic-framework/ionic';
 // Favourite page
 // ------------------------------
 @Page({
-	templateUrl: 'build/pages/tab3-settings-page/settings-page.html'
+	templateUrl: 'build/pages/page1/page1.html'
 })
 export class SettingsPage {
 
