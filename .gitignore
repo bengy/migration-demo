@@ -26,6 +26,16 @@ dist
 .scala_dependencies
 bin
 
+# Node
+!typings
 bower_components
 node_modules
+frontend/plugins
+frontend/platforms
+frontend/resources
+
+# Database
+backend/app/db/
+
+# Build, this should be added in the build-0.0.1 branch
 build

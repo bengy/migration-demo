@@ -1,0 +1,9 @@
+/// <reference path="../node_modules/angular2/typings/browser.d.ts"/>
+/// <reference path="./typings/moment/moment.d.ts" />
+/// <reference path="./typings/lodash/lodash.d.ts" />
+/// <reference path="../node_modules/angular2/common.d.ts" />
+/// <reference path="../node_modules/angular2/core.d.ts" />
+/// <reference path="../node_modules/angular2/http.d.ts" />
+/// <reference path="../node_modules/rxjs/Rx.d.ts" />
+/// <reference path="./typings/cordova/cordova.d.ts" />
+/// <reference path="./typings/main.d.ts" />
