@@ -1,0 +1,18 @@
+<ion-navbar *navbar>
+	<ion-title>Select channel</ion-title>
+	<!-- <ion-buttons end>
+		<button (click)="clickedOpenSearchPage()">
+			<ion-icon name="search" isActive="false"></ion-icon>
+		</button>
+		<button (click)="clickedTestPage()">
+			test
+		</button>
+	</ion-buttons> -->
+</ion-navbar>
+
+<ion-content class="page3">
+	<ion-list>
+		<channel-component [channel]="channel" (openEvent)="clickedOpenEvent($event)" *ngFor="#channel of channels | async">
+		</channel-component>
+	</ion-list>
+</ion-content>

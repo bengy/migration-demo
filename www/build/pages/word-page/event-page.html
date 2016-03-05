@@ -1,0 +1,165 @@
+<ion-navbar *navbar>
+	<ion-title>Event</ion-title>
+</ion-navbar>
+
+<ion-content padding class="event-page">
+	<div class="header-cover">
+		<div class="header-image-container">
+			<!--<div class="header-image-background">
+				<img class="header-image-background" style="background-image:url({{tvevent?.show?.info?.imageUrl}})" />
+			</div>-->
+			<img class="header-image" [style.background-image]="getCSSImageUrl(tvevent?.show?.info?.imageUrl)" />
+		</div>
+		<div class="header-cover-text-container">
+			<div class="tv-title-container">
+				<div class="tv-title-left">
+					<h2>{{tvevent?.show?.info?.title}}</h2>
+					<p>Staffel 1</p>
+				</div>
+				<div class="tv-title-right">
+					<p>{{tvevent | eventDuration}}</p>
+				</div>
+			</div>
+			<p>{{tvevent?.show?.info?.descriptionShort}}</p>
+		</div>
+	</div>
+	<ion-list no-lines>
+		<div *ngFor="#item of tvstream | async">
+			<div class="item-divider"></div>
+			<div [ngSwitch]="item.info.type">
+
+
+				<!-- *** PRODUCTS *** -->
+
+				<!-- GENERIC -->
+				<ion-item *ngSwitchWhen="'GENERIC'">
+					<h2 class="item-title">{{item?.info?.title}}</h2>
+					<p class="item-description">{{item?.meta?.generic?.data?.url}}</p>
+					<button outline item-right (click)="openUrl(item?.meta?.generic?.data?.url)">
+						Open
+					</button>
+
+				</ion-item>
+
+				<!-- AMAZON -->
+				<ion-item class="item-amazon" *ngSwitchWhen="'AMAZON'">
+					<ion-thumbnail item-left>
+						<img class="item-image" [src]="item?.meta?.amazon?.data?.itemImageUrl">
+					</ion-thumbnail>
+					<h2 class="item-title item-title-amazon">{{item?.meta?.amazon?.data?.title}}</h2>
+					<p class="item-description">{{item?.meta?.amazon?.data?.description}}</p>
+					<button outline item-right (click)="openUrl(item?.meta?.amazon?.data?.url)">
+						{{item?.meta?.amazon?.data?.price | priceFilter}}
+					</button>
+				</ion-item>
+
+				<!-- BUECHER DE -->
+				<ion-item *ngSwitchWhen="'BUECHERDE'">
+					<ion-thumbnail item-left>
+						<img class="item-image" [src]="item?.meta?.buecherde?.data?.firstResult?.artworkImageUrl">
+					</ion-thumbnail>
+					<h2 class="item-title">{{item?.meta?.buecherde?.data?.title}}</h2>
+					<p class="item-description">{{item?.meta?.buecherde?.data?.artist}}</p>
+					<button outline item-right (click)="openUrl(item?.meta?.buecherde?.data?.firstResult?.url)">
+						{{item?.meta?.buecherde?.data?.firstResult?.price | priceFilter}}
+					</button>
+				</ion-item>
+
+				<!-- SONG ITUNES -->
+				<ion-item *ngSwitchWhen="'SONG_ITUNES'">
+					<ion-thumbnail item-left>
+						<img class="item-image" [src]="item?.meta?.itunes?.data?.artworkImageUrl">
+					</ion-thumbnail>
+					<h2 class="item-title">{{item?.meta?.itunes?.data?.title}}</h2>
+					<p>{{item?.meta?.itunes?.data?.artist}}</p>
+					<button outline item-right (click)="openUrl(item?.meta?.itunes?.cache?.trackViewUrl)">
+						{{item?.meta?.itunes?.cache?.trackPrice | priceFilter}}
+					</button>
+				</ion-item>
+
+				<!-- SONG -->
+				<ion-item *ngSwitchWhen="'SONG'">
+					<!--<ion-thumbnail item-left>
+						<img [src]="item?.meta?.song.data?.artworkImageUrl">
+					</ion-thumbnail>-->
+					<h2 class="item-title">{{item?.meta?.song.data?.title}}</h2>
+					<p>{{item?.meta?.song.data?.artist}}</p>
+					<button outline item-right>Buy</button>
+				</ion-item>
+
+
+
+
+				<!-- *** INFO *** -->
+
+				<!-- WIKI_THING_TEXT -->
+				<wiki-thing-text-item *ngSwitchWhen="'WIKI_THING_TEXT'" [item]="item" (openUrl)="openUrl($event)"></wiki-thing-text-item>
+
+
+
+				<!-- WIKI_THING_IMAGE -->
+				<ion-item *ngSwitchWhen="'WIKI_THING_IMAGE'">
+					<ion-thumbnail item-left>
+						<img [src]="item?.meta?.wikipedia_image?.data?.mediaImageUrl">
+					</ion-thumbnail>
+					<h2 class="item-title">{{item?.meta?.wikipedia?.data?.title}}</h2>
+					<p class="item-description">{{item?.meta?.wikipedia?.data?.descriptionHtml}}</p>
+					<button outline item-right (click)="openUrl(item?.meta?.wikipedia?.data?.url)">
+						Open
+					</button>
+				</ion-item>
+
+				<!-- WIKI_PERSON_TEXT -->
+				<ion-item *ngSwitchWhen="'WIKI_PERSON_TEXT'">
+					<h2 class="item-title">{{item?.meta?.wikipedia?.data?.title}}</h2>
+					<p class="item-description">{{item?.meta?.wikipedia?.data?.descriptionHtml}}</p>
+					<button outline (click)="openUrl(item?.meta?.wikipedia?.data?.url)">
+						Open
+					</button>
+				</ion-item>
+
+				<!-- WIKI_PERSON_IMAGE -->
+				<wiki-person-image-item *ngSwitchWhen="'WIKI_PERSON_IMAGE'" [item]="item" (openUrl)="openUrl($event)"></wiki-person-image-item>
+				<!--<ion-item *ngSwitchWhen="'WIKI_PERSON_IMAGE'">
+					<ion-thumbnail item-left>
+						<img [src]="item?.meta?.wikipedia_image?.data?.mediaImageUrl">
+					</ion-thumbnail>
+					<h2 class="item-title">{{item?.meta?.wikipedia?.data?.title}}</h2>
+					<p class="item-description">{{item?.meta?.wikipedia?.data?.descriptionHtml}}</p>
+					<button outline item-right (click)="openUrl(item?.meta?.wikipedia?.data?.url)">
+						Open
+					</button>
+				</ion-item>-->
+
+
+
+
+
+				<!-- *** SOCIAL *** -->
+
+				<!-- TWITTER -->
+				<ion-item *ngSwitchWhen="'TWITTER'">
+					<ion-thumbnail item-left>
+						<img [src]="item?.meta?.twitter?.data?.profileImageUrl">
+					</ion-thumbnail>
+					<h2 class="item-title">{{item?.meta?.twitter?.data?.name}}</h2>
+					<p class="item-description">{{item?.meta?.twitter?.data?.text}}</p>
+					<!--<button outline item-right>View</button>-->
+					<!--"https://twitter.com/#{item.meta.twitter.data.author}/status/#{item.meta.twitter.ref}"-->
+				</ion-item>
+
+
+
+				<!-- DEFAULT -->
+				<ion-item *ngSwitchDefault>
+					<h2 class="item-title">{{item?.info?.title}}</h2>
+				</ion-item>
+
+
+
+
+
+			</div>
+		</div>
+	</ion-list>
+</ion-content>
