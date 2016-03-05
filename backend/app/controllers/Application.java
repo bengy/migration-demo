@@ -11,12 +11,19 @@ import play.mvc.Result;
 public class Application extends Controller {
     
     public static Result index() {
+    	User.create("User1", "englisch");
+    	User.create("User2", "deutsch");
         return redirect("/index.html");
     }
     
-    public static Result users() {
+   public static Result users() {
     	List<User> users = User.find.all(); 
     	return ok(Json.toJson(users));
+    }
+    
+    public static Result user(String id) {
+    	User user = User.find.byId(Long.parseLong(id));
+    	return ok(Json.toJson(user));
     }
     
     public static Result events() {

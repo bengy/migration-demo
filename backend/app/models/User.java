@@ -14,6 +14,18 @@ public class User extends Model{
 	private String name;
 	private String lang;
 	
+	public User(String name, String lang) {
+		super();
+		this.name = name;
+		this.lang = lang;
+	}
+	
+	public static User create(String name, String lang){
+		User user = new User(name, lang);
+		user.save();
+		return user;
+	}
+
 	public long getUserId() {
 		return userId;
 	}
@@ -46,5 +58,8 @@ public class User extends Model{
 		User.find = find;
 	}
 
+	
+	
 	public static Finder<Long, User> find = new Finder<Long, User>(Long.class, User.class);
+	
 }

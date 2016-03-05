@@ -9,6 +9,7 @@ GET		/api/v1/events				controllers.Application.events()
 
 #Users
 GET		/api/v1/users				controllers.Application.users()
+GET		/api/v1/user/:id				controllers.Application.user(id: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file               		controllers.Assets.at(path="/public/www", file)
