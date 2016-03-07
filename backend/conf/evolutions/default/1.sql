@@ -3,14 +3,14 @@
 
 # --- !Ups
 
-create table user (
-  user_id                   bigint not null,
+create table modell_user (
+  muser_id                  bigint not null,
   name                      varchar(255),
   lang                      varchar(255),
-  constraint pk_user primary key (user_id))
+  constraint pk_modell_user primary key (muser_id))
 ;
 
-create sequence user_seq;
+create sequence modell_user_seq;
 
 
 
@@ -19,9 +19,9 @@ create sequence user_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists user;
+drop table if exists modell_user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists user_seq;
+drop sequence if exists modell_user_seq;
 

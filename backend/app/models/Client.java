@@ -7,19 +7,19 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 @Entity
-public class ModellUser extends Model{
+public class Client extends Model{
 	@Id
-	private long muserId;
+	private long clientId;
 	@Constraints.Required
 	private String name;
 	private String lang;
 	
 	public long getUserId() {
-		return muserId;
+		return clientId;
 	}
 
 	public void setUserId(long userId) {
-		this.muserId = userId;
+		this.clientId = userId;
 	}
 
 	public String getName() {
@@ -38,13 +38,13 @@ public class ModellUser extends Model{
 		this.lang = lang;
 	}
 
-	public static Finder<Long, ModellUser> getFind() {
+	public static Finder<Long, Client> getFind() {
 		return find;
 	}
 
-	public static void setFind(Finder<Long, ModellUser> find) {
-		ModellUser.find = find;
+	public static void setFind(Finder<Long, Client> find) {
+		Client.find = find;
 	}
 
-	public static Finder<Long, ModellUser> find = new Finder<Long, ModellUser>(Long.class, ModellUser.class);
+	public static Finder<Long, Client> find = new Finder<Long, Client>(Long.class, Client.class);
 }
