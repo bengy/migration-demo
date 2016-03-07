@@ -1,0 +1,26 @@
+
+<ion-navbar *navbar>
+	<ion-title>
+		Hilights
+	</ion-title>
+	<ion-buttons end>
+		<button (click)="openSearchPage()">
+			<ion-icon name="search" isActive=false></ion-icon>
+		</button>
+	</ion-buttons>
+</ion-navbar>
+
+<ion-content class="page2">
+	<ion-refresher on-refresh="doRefresh($event)"></ion-refresher>
+	<ion-list>
+		<ion-item *ngFor="#hilight of hilights">
+			<!--<ion-thumbnail item-left>
+				<img src="images/placeholder/hilight.jpg">
+			</ion-thumbnail>-->
+			<h2>{{hilight.info.title}}</h2>
+			<!--<p>{{hilight.channelId}} • {{hilight  | eventDuration}}</p>-->
+			<p>{{hilight  | eventDuration}}</p>
+			<button clear item-right (click)="clickedEvent(hilight)">View</button>
+		</ion-item>
+	</ion-list>
+</ion-content>

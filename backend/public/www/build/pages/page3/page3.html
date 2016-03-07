@@ -1,0 +1,23 @@
+<ion-navbar *navbar>
+	<ion-title>
+		Sender
+	</ion-title>
+	<ion-buttons end>
+		<button (click)="clickedOpenSearchPage()">
+			<ion-icon name="search" isActive=false></ion-icon>
+		</button>
+	</ion-buttons>
+</ion-navbar>
+
+<ion-content class="page3">
+	<ion-list>
+		<ion-item *ngFor="#channel of channels | async">
+			<ion-avatar item-left>
+				<!--TODO make sure this works-->
+				<img [src]="channelService.logoUrlForChannel(channel) | async">
+			</ion-avatar>
+			<h2>{{channel.info.name}}</h2>
+			<button clear item-right (click)="clickedChannel(channel)">View</button>
+		</ion-item>
+	</ion-list>
+</ion-content>
