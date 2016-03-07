@@ -9,17 +9,17 @@ import play.db.ebean.Model;
 @Entity
 public class ModellUser extends Model{
 	@Id
-	private long userId;
+	private long muserId;
 	@Constraints.Required
 	private String name;
 	private String lang;
 	
 	public long getUserId() {
-		return userId;
+		return muserId;
 	}
 
 	public void setUserId(long userId) {
-		this.userId = userId;
+		this.muserId = userId;
 	}
 
 	public String getName() {
