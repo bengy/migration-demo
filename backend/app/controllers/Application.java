@@ -3,7 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Event;
-import models.User;
+import models.ModellUser;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -15,7 +15,7 @@ public class Application extends Controller {
     }
     
     public static Result users() {
-    	List<User> users = User.find.all(); 
+    	List<ModellUser> users = ModellUser.find.all(); 
     	return ok(Json.toJson(users));
     }
     
