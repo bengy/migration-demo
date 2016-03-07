@@ -30,4 +30,9 @@ public class Application extends Controller {
     	List<Event> events = Event.find.all(); 
     	return ok(Json.toJson(events));
     }
+    
+    public static Result event(String id) {
+    	Event event = Event.find.byId(Long.parseLong(id)); 
+    	return ok(Json.toJson(event));
+    }
 }

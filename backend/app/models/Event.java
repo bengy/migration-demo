@@ -12,6 +12,19 @@ public class Event extends Model{
 	private String from;
 	private String to;
 	
+	public Event(String name, String desc, String from, String to) {
+		this.name = name;
+		this.desc = desc;
+		this.from = from;
+		this.to = to;
+	}
+	
+	public Event create(String name, String desc, String from, String to){
+		Event event = new Event(name, desc, from, to);
+		event.save();
+		return event;
+	}
+
 	public Long getEventId() {
 		return eventId;
 	}
