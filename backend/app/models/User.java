@@ -1,5 +1,6 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,6 +12,7 @@ public class User extends Model{
 	@Id
 	private long userId;
 	@Constraints.Required
+	@Column(unique=true)
 	private String name;
 	private String lang;
 	
@@ -25,6 +27,16 @@ public class User extends Model{
 		user.save();
 		return user;
 	}
+	
+	public static User update(String id, String lang){
+		//Names cannot change
+		User user = User.find.byId(Long.parseLong(id));
+		user.setLang(lang);
+		user.save();
+		return user;
+	}
+	
+	
 
 	public long getUserId() {
 		return userId;

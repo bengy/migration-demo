@@ -7,6 +7,7 @@ create table user (
   user_id                   bigint not null,
   name                      varchar(255),
   lang                      varchar(255),
+  constraint uq_user_name unique (name),
   constraint pk_user primary key (user_id))
 ;
 

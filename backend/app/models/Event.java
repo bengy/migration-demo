@@ -1,6 +1,11 @@
 package models;
 
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Id;
+
+import org.joda.time.DateTime;
 
 import play.db.ebean.Model;
 
@@ -9,17 +14,19 @@ public class Event extends Model{
 	private Long eventId;
 	private String name;
 	private String desc;
-	private String from;
-	private String to;
+	private DateTime from;
+	private DateTime to;
+
+	public static Finder<Long, Event> find = new Finder<Long, Event>(Long.class, Event.class);
 	
-	public Event(String name, String desc, String from, String to) {
+	public Event(String name, String desc, DateTime from, DateTime to) {
 		this.name = name;
 		this.desc = desc;
-		this.from = from;
-		this.to = to;
+		this.setFrom(from);
+		this.setTo(to);
 	}
 	
-	public Event create(String name, String desc, String from, String to){
+	public Event create(String name, String desc, DateTime from, DateTime to){
 		Event event = new Event(name, desc, from, to);
 		event.save();
 		return event;
@@ -49,30 +56,36 @@ public class Event extends Model{
 		this.desc = desc;
 	}
 
-	public String getFrom() {
-		return from;
-	}
+	
 
-	public void setFrom(String from) {
-		this.from = from;
-	}
-
-	public String getTo() {
+	public DateTime getTo() {
 		return to;
 	}
 
-	public void setTo(String to) {
+	public void setTo(DateTime to) {
 		this.to = to;
 	}
 
-	public static Finder<Long, Event> getFind() {
-		return find;
+
+
+	public DateTime getFrom() {
+		return from;
 	}
 
-	public static void setFind(Finder<Long, Event> find) {
-		Event.find = find;
+	public void setFrom(DateTime from) {
+		this.from = from;
 	}
 
-	public static Finder<Long, Event> find = new Finder<Long, Event>(Long.class, Event.class);
-
+	public static List<Event> getEvents(String from, String to){
+		DateTime dtFrom = DateTime.parse(from);
+		DateTime dtTo = DateTime.parse(to);
+		List<Event> events = find.where().between("from", dtFrom, dtTo).findList();
+		events.addAll(find.where().between("to", dtFrom, dtTo).findList());
+		return events;
+	}
+	public static List<Event> getEvents(String from){
+		DateTime dtFrom = DateTime.parse(from);
+		List<Event> events = find.where().gt("from", dtFrom).findList();
+		return events;
+	}
 }
