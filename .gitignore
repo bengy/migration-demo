@@ -38,4 +38,7 @@ frontend/resources
 backend/app/db/
 
 # Build, this should be added in the build-0.0.1 branch
-#build
+# build
+
+# Mac
+.DS_Store

@@ -1,8 +1,14 @@
 {
   "dependencies": {
     "angular2": "2.0.0-beta.7",
+    "coffee-script": "^1.10.0",
+    "del": "^2.2.0",
     "es6-promise": "3.0.2",
     "es6-shim": "0.33.13",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "gutil": "^1.6.4",
     "ionic-framework": "2.0.0-beta.1",
     "ionicons": "3.0.0-alpha.3",
     "jquery": "^2.2.1",
@@ -13,6 +19,7 @@
     "rxjs": "5.0.0-beta.2",
     "socket.io": "^1.4.5",
     "socket.io-client": "^1.4.5",
+    "watch": "^0.17.1",
     "zone.js": "0.5.15"
   },
   "devDependencies": {
@@ -33,6 +40,10 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
-    "ios"
+    "ios",
+    {
+      "platform": "android",
+      "locator": "browser"
+    }
   ]
 }
