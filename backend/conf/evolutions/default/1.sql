@@ -6,7 +6,7 @@
 create table event (
   event_id                  bigint not null,
   name                      varchar(255),
-  desc                      varchar(255),
+  description               varchar(255),
   from_epoch                bigint,
   to_epoch                  bigint,
   constraint pk_event primary key (event_id))

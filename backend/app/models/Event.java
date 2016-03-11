@@ -17,7 +17,7 @@ public class Event extends Model{
 	@Id
 	private Long eventId;
 	private String name;
-	@Column(name="description")
+	@Column(name="info")
 	private String desc;
 	@JsonProperty("from")
 	private Long fromEpoch;
