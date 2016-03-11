@@ -2,6 +2,7 @@ package models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -16,6 +17,7 @@ public class Event extends Model{
 	@Id
 	private Long eventId;
 	private String name;
+	@Column(name="description")
 	private String desc;
 	@JsonProperty("from")
 	private Long fromEpoch;
