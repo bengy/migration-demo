@@ -1,33 +1,49 @@
 package models;
 
-import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import org.joda.time.DateTime;
+import com.avaje.ebean.Expr;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import play.db.ebean.Model;
+import play.libs.Json;
 
+@Entity
 public class Event extends Model{
 	@Id
 	private Long eventId;
 	private String name;
 	private String desc;
-	private DateTime from;
-	private DateTime to;
+	@JsonProperty("from")
+	private Long fromEpoch;
+	@JsonProperty("to")
+	private Long toEpoch;
 
 	public static Finder<Long, Event> find = new Finder<Long, Event>(Long.class, Event.class);
 	
-	public Event(String name, String desc, DateTime from, DateTime to) {
+	public Event(String name, String desc, Long from, Long to) {
 		this.name = name;
 		this.desc = desc;
-		this.setFrom(from);
-		this.setTo(to);
+		this.fromEpoch = from;
+		this.toEpoch = to ;
 	}
 	
-	public Event create(String name, String desc, DateTime from, DateTime to){
+	public static Event create(String name, String desc, Long from, Long to){
 		Event event = new Event(name, desc, from, to);
+		event.save();
+		return event;
+	}
+	
+	public static Event update(Long id, String name, String desc, Long from, Long to){
+		Event event = Event.find.byId(id);
+		event.setFromEpoch(from);
+		event.setToEpoch(to);
+		event.setName(name);
+		event.setDesc(desc);
 		event.save();
 		return event;
 	}
@@ -55,37 +71,39 @@ public class Event extends Model{
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-
 	
-
-	public DateTime getTo() {
-		return to;
+	public Long getFromEpoch() {
+		return fromEpoch;
 	}
 
-	public void setTo(DateTime to) {
-		this.to = to;
+	public void setFromEpoch(Long fromEpoch) {
+		this.fromEpoch = fromEpoch;
 	}
 
-
-
-	public DateTime getFrom() {
-		return from;
+	public Long getToEpoch() {
+		return toEpoch;
 	}
 
-	public void setFrom(DateTime from) {
-		this.from = from;
+	public void setToEpoch(Long toEpoch) {
+		this.toEpoch = toEpoch;
 	}
 
-	public static List<Event> getEvents(String from, String to){
-		DateTime dtFrom = DateTime.parse(from);
-		DateTime dtTo = DateTime.parse(to);
-		List<Event> events = find.where().between("from", dtFrom, dtTo).findList();
-		events.addAll(find.where().between("to", dtFrom, dtTo).findList());
+	public static List<Event> getEvents(Long from, Long to) throws NumberFormatException{	
+		List<Event> events = find.where().or(Expr.between("fromEpoch", from, to),Expr.between("toEpoch", from, to)).findList();
+		// get Events that startet before and ended after the requested date
+		List<Event> events2 = find.where().and(Expr.lt("fromEpoch", from), Expr.gt("toEpoch",to)).findList();
+		events.addAll(events2);		
 		return events;
 	}
-	public static List<Event> getEvents(String from){
-		DateTime dtFrom = DateTime.parse(from);
-		List<Event> events = find.where().gt("from", dtFrom).findList();
+	
+	public static List<Event> getEvents(Long from) throws NumberFormatException{
+		List<Event> events = find.where().gt("fromEpoch", from).findList();
 		return events;
 	}
+	
+	public static List<Event> getEvents(){
+		List<Event> events = find.all();
+		return events;
+	}
+
 }

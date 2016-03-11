@@ -5,13 +5,15 @@
 GET     /                           controllers.Application.index()
 
 #Events
-GET		/api/v1/events				controllers.Application.getEvents()
+GET		/api/v1/events				controllers.Application.getEvents(lang: String ?=null, from: Long ?=0, to: Long ?=0, limit: Int ?=0)
 GET		/api/v1/event/:id			controllers.Application.getEvent(id: String)
+POST	/api/v1/event				controllers.Application.postEvent()
+
 
 #Users
 GET		/api/v1/users				controllers.Application.getUsers()
 GET		/api/v1/user/:id			controllers.Application.getUser(id: String)
-POST		/api/v1/user				controllers.Application.postUser()
+POST	/api/v1/user				controllers.Application.postUser()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file               		controllers.Assets.at(path="/public/www", file)
