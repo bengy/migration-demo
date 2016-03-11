@@ -1,5 +1,7 @@
 ## Refugee app
 
+Link to app: [http://flucht.herokuapp.com](http://flucht.herokuapp.com)
+
 ### Install instructions MacOSX
 ```bash
 # Deps Mac
