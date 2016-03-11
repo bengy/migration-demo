@@ -18,13 +18,16 @@ dist
 /.settings
 /project/*-shim.sbt
 
-# Eclipse
+# ECLIPSE
 .settings
 .cache
 .project
 .classpath
 .scala_dependencies
 bin
+
+#MISC
+.DS_Store
 
 bower_components
 node_modules
