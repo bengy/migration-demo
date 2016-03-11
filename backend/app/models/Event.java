@@ -17,8 +17,8 @@ public class Event extends Model{
 	@Id
 	private Long eventId;
 	private String name;
-	@Column(name="info")
-	private String desc;
+	@JsonProperty("desc")
+	private String info;
 	@JsonProperty("from")
 	private Long fromEpoch;
 	@JsonProperty("to")
@@ -28,7 +28,7 @@ public class Event extends Model{
 	
 	public Event(String name, String desc, Long from, Long to) {
 		this.name = name;
-		this.desc = desc;
+		this.info = desc;
 		this.fromEpoch = from;
 		this.toEpoch = to ;
 	}
@@ -66,11 +66,11 @@ public class Event extends Model{
 	}
 
 	public String getDesc() {
-		return desc;
+		return info;
 	}
 
 	public void setDesc(String desc) {
-		this.desc = desc;
+		this.info = desc;
 	}
 	
 	public Long getFromEpoch() {
