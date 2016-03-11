@@ -3,14 +3,26 @@
 
 # --- !Ups
 
-create table client (
+create table event (
+  event_id                  bigint not null,
+  name                      varchar(255),
+  desc                      varchar(255),
+  from_epoch                bigint,
+  to_epoch                  bigint,
+  constraint pk_event primary key (event_id))
+;
+
+create table Client (
   client_id                 bigint not null,
   name                      varchar(255),
   lang                      varchar(255),
-  constraint pk_client primary key (client_id))
+  constraint uq_Client_name unique (name),
+  constraint pk_Client primary key (client_id))
 ;
 
-create sequence client_seq;
+create sequence event_seq;
+
+create sequence Client_seq;
 
 
 
@@ -19,9 +31,13 @@ create sequence client_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists client;
+drop table if exists event;
+
+drop table if exists Client;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists client_seq;
+drop sequence if exists event_seq;
+
+drop sequence if exists Client_seq;
 

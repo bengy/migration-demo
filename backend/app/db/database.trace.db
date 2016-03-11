@@ -2,11 +2,167 @@
 org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
 Table "PLAY_EVOLUTIONS" not found; SQL statement:
 select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
+<<<<<<< HEAD
 03-07 18:45:19 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
 Table "PLAY_EVOLUTIONS" not found; SQL statement:
 select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
 03-07 19:06:45 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
+Table "PLAY_EVOLUTIONS" not found; SQL statement:
+select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
+=======
+03-09 16:00:29 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE EVENT (
+EVENT_ID                  BIGINT NOT NULL,
+NAME                      VARCHAR(255),
+DESC                      VARCHAR(255),
+FROM[*]                      TIMESTAMP,
+TO                        TIMESTAMP,
+CONSTRAINT PK_EVENT PRIMARY KEY (EVENT_ID)) "; erwartet "identifier"
+Syntax error in SQL statement "CREATE TABLE EVENT (
+EVENT_ID                  BIGINT NOT NULL,
+NAME                      VARCHAR(255),
+DESC                      VARCHAR(255),
+FROM[*]                      TIMESTAMP,
+TO                        TIMESTAMP,
+CONSTRAINT PK_EVENT PRIMARY KEY (EVENT_ID)) "; expected "identifier"; SQL statement:
+create table event (
+event_id                  bigint not null,
+name                      varchar(255),
+desc                      varchar(255),
+from                      timestamp,
+to                        timestamp,
+constraint pk_event primary key (event_id)) [42001-172]
+03-09 16:01:07 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
+Table "PLAY_EVOLUTIONS" not found; SQL statement:
+select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
+03-09 16:01:09 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "CREATE TABLE EVENT (
+EVENT_ID                  BIGINT NOT NULL,
+NAME                      VARCHAR(255),
+DESC                      VARCHAR(255),
+FROM[*]                      TIMESTAMP,
+TO                        TIMESTAMP,
+CONSTRAINT PK_EVENT PRIMARY KEY (EVENT_ID)) "; erwartet "identifier"
+Syntax error in SQL statement "CREATE TABLE EVENT (
+EVENT_ID                  BIGINT NOT NULL,
+NAME                      VARCHAR(255),
+DESC                      VARCHAR(255),
+FROM[*]                      TIMESTAMP,
+TO                        TIMESTAMP,
+CONSTRAINT PK_EVENT PRIMARY KEY (EVENT_ID)) "; expected "identifier"; SQL statement:
+create table event (
+event_id                  bigint not null,
+name                      varchar(255),
+desc                      varchar(255),
+from                      timestamp,
+to                        timestamp,
+constraint pk_event primary key (event_id)) [42001-172]
+03-09 16:04:52 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
+Table "PLAY_EVOLUTIONS" not found; SQL statement:
+select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
+03-09 16:05:44 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
+Table "PLAY_EVOLUTIONS" not found; SQL statement:
+select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
+03-10 13:12:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "BETWEEN" nicht gefunden
+Table "BETWEEN" not found; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_date c3, t0.to_date c4 from event t0 where from between  ? and ?  [42102-172]
+03-10 13:15:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "BETWEEN" nicht gefunden
+Table "BETWEEN" not found; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_date c3, t0.to_date c4 from event t0 where from between  ? and ?  [42102-172]
+03-10 14:05:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "BETWEEN" nicht gefunden
+Table "BETWEEN" not found; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_date c3, t0.to_date c4 from event t0 where from between  ? and ?  [42102-172]
+03-10 14:05:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "BETWEEN" nicht gefunden
+Table "BETWEEN" not found; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_date c3, t0.to_date c4 from event t0 where from between  ? and ?  [42102-172]
+03-10 14:07:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "BETWEEN" nicht gefunden
+Table "BETWEEN" not found; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_date c3, t0.to_date c4 from event t0 where from between  ? and ?  [42102-172]
+03-10 14:18:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "BETWEEN" nicht gefunden
+Table "BETWEEN" not found; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_date c3, t0.to_date c4 from event t0 where from between  ? and ?  [42102-172]
+03-10 14:20:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "BETWEEN" nicht gefunden
+Table "BETWEEN" not found; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_date c3, t0.to_date c4 from event t0 where from between  ? and ?  [42102-172]
+03-10 14:54:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax Fehler in SQL Befehl "SELECT T0.EVENT_ID C0, T0.NAME C1, T0.DESC C2, T0.FROM_DATE C3, T0.TO_DATE C4 FROM EVENT T0 WHERE FROM >[*] ?  "; erwartet "identifier"
+Syntax error in SQL statement "SELECT T0.EVENT_ID C0, T0.NAME C1, T0.DESC C2, T0.FROM_DATE C3, T0.TO_DATE C4 FROM EVENT T0 WHERE FROM >[*] ?  "; expected "identifier"; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_date c3, t0.to_date c4 from event t0 where from > ?  [42001-172]
+03-10 14:57:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
+Table "PLAY_EVOLUTIONS" not found; SQL statement:
+select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
+03-10 15:48:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Kann "TIMESTAMP" "1425780040" nicht umwandeln
+Cannot parse "TIMESTAMP" constant "1425780040"; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_date c3, t0.to_date c4 from event t0 where t0.from_date between  ? and ?  [22007-172]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:158)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:87)
+	at org.h2.value.Value.convertTo(Value.java:821)
+	at org.h2.expression.Comparison.getValue(Comparison.java:237)
+	at org.h2.expression.ConditionAndOr.getValue(ConditionAndOr.java:87)
+	at org.h2.expression.Expression.getBooleanValue(Expression.java:180)
+	at org.h2.command.dml.Select.queryFlat(Select.java:520)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:625)
+	at org.h2.command.dml.Query.query(Query.java:314)
+	at org.h2.command.dml.Query.query(Query.java:284)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:91)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:106)
+	at com.jolbox.bonecp.PreparedStatementHandle.executeQuery(PreparedStatementHandle.java:174)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQuery(CQuery.java:377)
+	at com.avaje.ebeaninternal.server.query.CQueryEngine.findMany(CQueryEngine.java:162)
+	at com.avaje.ebeaninternal.server.query.DefaultOrmQueryEngine.findMany(DefaultOrmQueryEngine.java:77)
+	at com.avaje.ebeaninternal.server.core.OrmQueryRequest.findList(OrmQueryRequest.java:265)
+	at com.avaje.ebeaninternal.server.core.DefaultServer.findList(DefaultServer.java:1460)
+	at com.avaje.ebeaninternal.server.querydefn.DefaultOrmQuery.findList(DefaultOrmQuery.java:885)
+	at com.avaje.ebeaninternal.util.DefaultExpressionList.findList(DefaultExpressionList.java:177)
+	at models.Event.getEvents(Event.java:100)
+	at controllers.Application.getEvents(Application.java:80)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$2$$anonfun$apply$2.apply(routes_routing.scala:85)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$2$$anonfun$apply$2.apply(routes_routing.scala:85)
+	at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183)
+	at play.core.Router$Routes$$anon$1.invocation(Router.scala:377)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56)
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:91)
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:90)
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251)
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:37)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.IllegalArgumentException: 1425780040
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:270)
+	at org.h2.value.ValueTimestamp.parseTry(ValueTimestamp.java:105)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:85)
+	... 41 more
+03-10 18:49:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Datenumwandlungsfehler beim Umwandeln von "toEpoch"
+Data conversion error converting "toEpoch"; SQL statement:
+select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_epoch c3, t0.to_epoch c4 from event t0 where t0.from_epoch between  ? and ?  [22018-172]
+>>>>>>> api
+03-11 16:00:06 jdbc[2]: exception
 org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
 Table "PLAY_EVOLUTIONS" not found; SQL statement:
 select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
