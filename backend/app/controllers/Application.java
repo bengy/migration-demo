@@ -14,6 +14,8 @@ import play.mvc.Result;
 
 public class Application extends Controller {
     
+	public static final String STATUS = "status";
+	
     public static Result index() {
         return redirect("/index.html");
     }
@@ -24,9 +26,50 @@ public class Application extends Controller {
     	return ok(Json.toJson(users));
     }
     
-    public static Result getUser(String id) {
-    	User user = User.find.byId(Long.parseLong(id));
+    public static Result getUser(Long id) {
+    	User user = User.find.byId(id);
     	return ok(Json.toJson(user));
+    }
+    
+    @BodyParser.Of(BodyParser.Json.class)
+    public static Result postUser() {
+    	User user=null;
+    	JsonNode json = request().body().asJson();
+    	ObjectNode status = Json.newObject();
+    	//Create when no id is delivered
+    	if(json.get("id")==null){
+    		//check if User already exists
+    		if(User.find.where().eq("name", json.get("name").textValue()).findRowCount()>0){
+    			status.put(STATUS, "taken");
+    			return badRequest(status);
+    		}
+    		 user = User.create(json.get("name").textValue(), json.get("lang").textValue());
+    		 status.put(STATUS, "done");
+    		 status.put("id", user.getUserId());
+    		 return ok(status);
+    	}
+    	//Update when id is delivered
+    	if(User.find.byId(Long.parseLong(json.get("id").textValue())) != null){
+	    	user = User.update(json.get("id").textValue(), json.get("lang").textValue());
+	    	status.put(STATUS, "updated");
+	    	return ok(status);
+    	}else{
+    		status.put(STATUS, "null");
+	    	return ok(status);
+    	}
+    }
+    
+    public static Result deleteUser(Long id){
+    	ObjectNode status = Json.newObject();
+    	User user = User.find.byId(id);
+    	if(user!=null){
+    		user.delete();
+    		status.put(STATUS, "deleted");
+    	}
+    	else{
+        	status.put(STATUS, "null");
+    	}
+    	return ok(status);
     }
     
     @BodyParser.Of(BodyParser.Json.class)
@@ -41,7 +84,7 @@ public class Application extends Controller {
     	//Create when no id is delivered
     	if(json.get("id")==null){
 				event = Event.create(name, desc, from, to);
-    			status.put("status", "done");
+    			status.put(STATUS, "done");
     			status.put("eventId", event.getEventId());
     			return ok(status);
     	}
@@ -49,11 +92,11 @@ public class Application extends Controller {
     	Long id = Long.parseLong(json.get("id").textValue());
     	if(Event.find.byId(id) != null){
 				event = Event.update(id, name, desc, from, to);
-				status.put("status", "updated");   	
+				status.put(STATUS, "updated");   	
 		    	return ok(status);
     	}
     	else{
-    		status.put("status", "null");   	
+    		status.put(STATUS, "null");   	
 	    	return ok(status);
     	}
     }
@@ -80,39 +123,23 @@ public class Application extends Controller {
     	return ok(Json.toJson(events));
     }
     
-    
-    public static Result getEvent(String id) {
-    	Event event = Event.find.byId(Long.parseLong(id)); 	
+    public static Result getEvent(Long id) {
+    	Event event = Event.find.byId(id); 	
     	return ok(Json.toJson(event));
     }
     
-    
-    
-    @BodyParser.Of(BodyParser.Json.class)
-    public static Result postUser() {
-    	User user=null;
-    	JsonNode json = request().body().asJson();
+    public static Result deleteEvent(Long id){
     	ObjectNode status = Json.newObject();
-    	//Create when no id is delivered
-    	if(json.get("id")==null){
-    		//check if User already exists
-    		if(User.find.where().eq("name", json.get("name").textValue()).findRowCount()>0){
-    			status.put("status", "taken");
-    			return badRequest(status);
-    		}
-    		 user = User.create(json.get("name").textValue(), json.get("lang").textValue());
-    		 status.put("status", "done");
-    		 status.put("id", user.getUserId());
-    		 return ok(status);
+    	Event event = Event.find.byId(id);
+    	if(event!=null){
+    		event.delete();
+    		status.put(STATUS, "deleted");
     	}
-    	//Update when id is delivered
-    	if(User.find.byId(Long.parseLong(json.get("id").textValue())) != null){
-	    	user = User.update(json.get("id").textValue(), json.get("lang").textValue());
-	    	status.put("status", "updated");
-	    	return ok(status);
-    	}else{
-    		status.put("status", "null");
-	    	return ok(status);
+    	else{
+        	status.put(STATUS, "null");
     	}
+    	return ok(status);
     }
+    
+    
 }
