@@ -19,6 +19,7 @@ import {Type} from 'angular2/core';
 // ------------------------------
 import {EventsPage} from '../tab1-events-page/events-page';
 import {ChatPage} from '../tab2-chat-page/chat-page';
+import {InfoPage} from '../tab2-info-page/info-page';
 import {SettingsPage} from '../tab3-settings-page/settings-page.ts';
 
 
@@ -35,8 +36,7 @@ export class TabsPage {
 	// this tells the tabs component which Pages
 	// should be each tab's root Page
 	tab1Root: Type = EventsPage;
-	tab2Root: Type = ChatPage;
-	tab3Root: Type = SettingsPage;
+	tab2Root: Type = InfoPage;
 
 	constructor() {
 

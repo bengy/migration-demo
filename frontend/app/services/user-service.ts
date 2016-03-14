@@ -14,7 +14,6 @@ import {Injectable} from "angular2/core";
 import {Http, URLSearchParams, Jsonp} from "angular2/http";
 import {Location} from "angular2/router";
 import Rx = require("rxjs")
-import io = require("socket.io-client")
 
 
 

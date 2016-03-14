@@ -44,12 +44,27 @@ export class InitPage {
 
 	// var
 	private currentIndex = 0
+	private currentLanguage = "Englisch"
 
 	// constructor
 	constructor(
 		private http: Http,
 		private params: NavParams,
-		private nav: NavController){
+		private nav: NavController,
+		private settingsService: SettingsService){
+
+		// If registered we can skip this
+		if(this.settingsService.settings.didRegister){
+			this.nav.push(TabsPage)
+		}
+	}
+
+	clickedNextLanguage(){
+		this.settingsService.setNextLanguage(false)
+	}
+
+	clickedPrevLanguage(){
+		this.settingsService.setNextLanguage(true)
 	}
 
 	clickedNextPage(){
