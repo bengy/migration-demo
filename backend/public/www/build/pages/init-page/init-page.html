@@ -5,166 +5,438 @@
                 Welcome
             </h2>
         </ion-slide>
-        <ion-slide class="page-second">
-            <div class="slide-container">
-                <!-- Flag -->
-                <div class="lang-selection-container">
-                    <div class="selection-left">
-                        <button round>
-                            <ion-icon ios="ios-arrow-back" md="md-arrow-dropleft">
-                            </ion-icon>
-                        </button>
-                    </div>
-                    <div class="selection-language">
-                        <div class="flag">
-                            <img src="/img/flags/DE@3x.png"/>
+        <!--
+            <ion-slide class="page-second">
+                <div class="slide-container">
+                    <div class="lang-selection-container">
+                        <div class="selection-left">
+                            <button (click)="clickedPrevLanguage()" round>
+                                <ion-icon ios="ios-arrow-back" md="md-arrow-dropleft">
+                                </ion-icon>
+                            </button>
                         </div>
-                        <p>
-                            Deutsch
-                        </p>
+                        <div class="selection-language">
+                            <div class="flag">
+                                <img src="/img/flags/{{settingsService.getLanguageFlagImageName()}}@3x.png"/>
+                            </div>
+                            <p>
+                                {{settingsService.getLanguageName()}}
+                            </p>
+                        </div>
+                        <div class="selection-right">
+                            <button (click)="clickedNextLanguage()" round>
+                                <ion-icon ios="ios-arrow-forward" md="md-arrow-dropright">
+                                </ion-icon>
+                            </button>
+                        </div>
                     </div>
-                    <div class="selection-right">
-                        <button round>
+                    <div class="name-container">
+                        <div class="name">
+                            <ion-list>
+                                <ion-item>
+                                    <ion-label floating>
+                                        Username
+                                    </ion-label>
+                                    <ion-input [(ngModel)]="settingsService.settings.name" type="text">
+                                    </ion-input>
+                                </ion-item>
+                            </ion-list>
+                        </div>
+                    </div>
+                    <div class="next-button">
+                        <button light clear>
+                            Next
                             <ion-icon ios="ios-arrow-forward" md="md-arrow-dropright">
                             </ion-icon>
                         </button>
                     </div>
                 </div>
-
-
-
-                <!-- Name container -->
-                <div class="name-container">
-                    <p>
-                        Du bist
-                    </p>
-                    <div class="name">
-                        Hannes
-                    </div>
-                </div>
-
-
-                <!-- Next button -->
-                <div class="next-button">
-                    <button light clear>
-                        <ion-icon ios="ios-arrow-forward" md="md-arrow-dropright">
-                        </ion-icon>
-                    </button>
-                </div>
-            </div>
-        </ion-slide>
+            </ion-slide>
+        -->
         <ion-slide class="page-third">
             <div class="third-slide-container">
                 <div class="agb-container">
-                    <h2>
-                        AGB
-                    </h2>
                     <p>
-                        1. Vertragsumfang und Gültigkeit
-                        Alle Aufträge und Vereinbarungen sind nur dann rechtsverbindlich, wenn sie vom Auftragnehmer schriftlich und firmengemäß gezeichnet werden und verpflichten nur in dem in der Auftragsbestätigung angegebenem Umfang. Einkaufsbedingungen des Auftraggebers werden für das gegenständliche Rechtsgeschäft und die gesamte Geschäftsbeziehung hiermit ausgeschlossen. Angebote sind grundsätzlich freibleibend.
-                        2. Leistung und Prüfung
-                        2.1. Gegenstand eines Auftrages kann sein:
-                        – Ausarbeitung von Organisationskonzepten
-                        – Global- und Detailanalysen
-                        – Erstellung von Individualprogrammen
-                        – Lieferung von Bibliotheks- (Standard-)Programmen
-                        – Erwerb von Nutzungsberechtigungen für Softwareprodukte
-                        – Erwerb von Werknutzungsbewilligungen
-                        – Mitwirkung bei der Inbetriebnahme (Umstellungsunterstützung)
-                        – Telefonische Beratung
-                        – Programmwartung
-                        – Erstellung von Programmträgern
-                        – Sonstige Dienstleistungen
-                        2.2. Die Ausarbeitung individueller Organisationskonzepte und Programme erfolgt nach Art und Umfang der vom Auftraggeber vollständig zur Verfügung gestellten bindenden Informationen, Unterlagen und Hilfsmittel. Dazu zählen auch praxisgerechte Testdaten sowie Testmöglichkeiten in ausreichendem Ausmaß, die der Auftraggeber zeitgerecht, in der Normalarbeitszeit und auf seine Kosten zur Verfügung stellt. Wird vom Auftraggeber bereits auf der zum Test zur Verfügung gestellten Anlage im Echtbetrieb gearbeitet, liegt die Verantwortung für die Sicherung der Echtdaten beim Auftraggeber.
-                        2.3. Grundlage für die Erstellung von Individualprogrammen ist die schriftliche Leistungsbeschreibung, die der Auftragnehmer gegen Kostenberechnung aufgrund der ihm zur Verfügung gestellten Unterlagen und Informationen ausarbeitet bzw. der Auftraggeber zur Verfügung stellt. Diese Leistungsbeschreibung ist vom Auftraggeber auf Richtigkeit und Vollständigkeit zu überprüfen und mit seinem Zustimmungsvermerk zu versehen. Später auftretende Änderungswünsche können zu gesonderten Termin- und Preisvereinbarungen führen.
-                        2.4. Individuell erstellte Software bzw. Programmadaptierungen bedürfen für das jeweils betroffene Programmpaket einer Programmabnahme spätestens vier Wochen ab Lieferung durch den Auftraggeber. Diese wird in einem Protokoll vom Auftraggeber bestätigt. (Prüfung auf Richtigkeit und Vollständigkeit anhand der vom Auftragnehmer akzeptierten Leistungsbeschreibung mittels der unter Punkt 2.2. angeführten zur Verfügung gestellten Testdaten). Lässt der Auftraggeber den Zeitraum von vier Wochen ohne Programmabnahme verstreichen, so gilt die gelieferte Software mit dem Enddatum des genannten Zeitraumes als abgenommen. Bei Einsatz der Software im Echtbetrieb durch den Auftraggeber gilt die Software jedenfalls als abgenommen.
-                        Etwa auftretende Mängel, das sind Abweichungen von der schriftlich vereinbarten Leistungsbeschreibung, sind vom Auftraggeber ausreichend dokumentiert dem Auftragnehmer zu melden, der um raschest mögliche Mängelbehebung bemüht ist. Liegen schriftlich gemeldete, wesentliche Mängel vor, das heißt, dass der Echtbetrieb nicht begonnen oder fortgesetzt werden kann, so ist nach Mängelbehebung eine neuerliche Abnahme erforderlich. Der Auftraggeber ist nicht berechtigt, die Abnahme von Software wegen unwesentlicher Mängel abzulehnen.
-                        2.5. Bei Bestellung von Bibliotheks-(Standard-)Programmen bestätigt der Auftraggeber mit der Bestellung die Kenntnis des Leistungsumfanges der bestellten Programme.
-                        2.6. Sollte sich im Zuge der Arbeiten herausstellen, dass die Ausführung des Auftrages gemäß Leistungsbeschreibung tatsächlich oder juristisch unmöglich ist, ist der Auftragnehmer verpflichtet, dies dem Auftraggeber sofort anzuzeigen. Ändert der Auftraggeber die Leistungsbeschreibung nicht dahingehend bzw. schafft die Voraussetzung, dass eine Ausführung möglich wird, kann der Auftragnehmer die Ausführung ablehnen. Ist die Unmöglichkeit der Ausführung die Folge eines Versäumnisses des Auftraggebers oder einer nachträglichen Änderung der Leistungsbeschreibung durch den Auftraggeber, ist der Auftragnehmer berechtigt, vom Auftrag zurückzutreten. Die bis dahin für die Tätigkeit des Auftragnehmers angefallenen Kosten und Spesen sowie allfällige Abbaukosten sind vom Auftraggeber zu ersetzen.
-                        2.7. Ein Versand von Programmträgern, Dokumentationen und Leistungsbeschreibungen erfolgt auf Kosten und Gefahr des Auftraggebers. Darüber hinaus vom Auftraggeber gewünschte Schulung und Erklärungen werden gesondert in Rechnung gestellt. Versicherungen erfolgen nur auf Wunsch des Auftraggebers.
-                        3. Preise, Steuern und Gebühren
-                        3.1. Alle Preise verstehen sich in Euro ohne Umsatzsteuer. Sie gelten nur für den vorliegenden Auftrag. Die genannten Preise verstehen sich ab Geschäftssitz bzw. – stelle des Auftragnehmers. Die Kosten von Programmträgern (z.B. CD’s, Magnetbänder, Magnetplatten, Floppy Disks, Streamer Tapes, Magnetbandkassetten usw.) sowie allfällige Vertragsgebühren werden gesondert in Rechnung gestellt.
-                        3.2. Bei Bibliotheks- (Standard)-Programmen gelten die am Tag der Lieferung gültigen Listenpreise. Bei allen anderen Dienstleistungen (Organisationsberatung, Programmierung, Einschulung, Umstellungsunterstützung, telefonische Beratung usw.) wird der Arbeitsaufwand zu den am Tag der Leistungserbringung gültigen Sätzen verrechnet. Abweichungen von einem dem Vertragspreis zugrundeliegenden Zeitaufwand, der nicht vom Auftragnehmer zu vertreten ist, wird nach tatsächlichem Anfall berechnet.
-                        3.3. Die Kosten für Fahrt-, Tag- und Nächtigungsgelder werden dem Auftraggeber gesondert nach den jeweils gültigen Sätzen in Rechnung gestellt. Wegzeiten gelten als Arbeitszeit.
-                        4. Liefertermin
-                        4.1. Der Auftragnehmer ist bestrebt, die vereinbarten Termine der Erfüllung (Fertigstellung) möglichst genau einzuhalten.
-                        4.2. Die angestrebten Erfüllungstermine können nur dann eingehalten werden, wenn der Auftraggeber zu den vom Auftragnehmer angegebenen Terminen alle notwendigen Arbeiten und Unterlagen vollständig, insbesondere die von ihm akzeptierte Leistungsbeschreibung lt. Punkt 2.3. zur Verfügung stellt und seiner Mitwirkungsverpflichtung im erforderlichen Ausmaß nachkommt.
-                        Lieferverzögerungen und Kostenerhöhungen, die durch unrichtige, unvollständige oder nachträglich geänderte Angaben und Informationen bzw. zur Verfügung gestellte Unterlagen entstehen, sind vom Auftragnehmer nicht zu vertreten und können nicht zum Verzug des Auftragnehmers führen. Daraus resultierende Mehrkosten trägt der Auftraggeber.
-                        4.3. Bei Aufträgen, die mehrere Einheiten bzw. Programme umfassen, ist der Auftragnehmer berechtigt, Teillieferungen durchzuführen bzw. Teilrechnungen zu legen.
-                        5. Zahlung
-                        5.1. Die vom Auftragnehmer gelegten Rechnungen inklusive Umsatzsteuer sind spätestens 14 Tage ab Fakturenerhalt ohne jeden Abzug und spesenfrei zahlbar. Für Teilrechnungen gelten die für den Gesamtauftrag festgelegten Zahlungsbedingungen analog.
-                        5.2. Bei Aufträgen, die mehrere Einheiten (z.B. Programme und/oder Schulungen, Realisierungen in Teilschritten) umfassen, ist der Auftragnehmer berechtigt, nach Lieferung jeder einzelnen Einheit oder Leistung Rechnung zu legen.
-                        5.3. Die Einhaltung der vereinbarten Zahlungstermine bildet eine wesentliche Bedingung für die Durchführung der Lieferung bzw. Vertragserfüllung durch den Auftragnehmer. Die Nichteinhaltung der vereinbarten Zahlungen berechtigen den Auftragnehmer, die laufenden Arbeiten einzustellen und vom Vertrag zurückzutreten. Alle damit verbundenen Kosten sowie der Gewinnentgang sind vom Auftraggeber zu tragen.
-                        Bei Zahlungsverzug werden Verzugszinsen im banküblichen Ausmaß verrechnet. Bei Nichteinhaltung zweier Raten bei Teilzahlungen ist der Auftragnehmer berechtigt, Terminverlust in Kraft treten zu lassen und übergebene Akzepte fällig zu stellen.
-                        5.4. Der Auftraggeber ist nicht berechtigt, Zahlungen wegen nicht vollständiger Gesamtlieferung, Garantie- oder Gewährleistungsansprüchen oder Bemängelungen zurück zu halten.
-                        6. Urheberrecht und Nutzung
-                        6.1. Alle Urheberrechte an den vereinbarten Leistungen (Programme, Dokumentationen etc.) stehen dem Auftragnehmer bzw. dessen Lizenzgebern zu. Der Auftraggeber erhält ausschließlich das Recht, die Software nach Bezahlung des vereinbarten Entgelts ausschließlich zu eigenen Zwecken, nur für die im Vertrag spezifizierte Hardware und im Ausmaß der erworbenen Anzahl Lizenzen für die gleichzeitige Nutzung auf mehreren Arbeitsplätzen zu verwenden. Durch den gegenständlichen Vertrag wird lediglich eine Werknutzungsbewilligung erworben. Eine Verbreitung durch den Auftraggeber ist gemäß Urheberrechtsgesetz ausgeschlossen. Durch die Mitwirkung des Auftraggebers bei der Herstellung der Software werden keine Rechte über die im gegenständlichen Vertrag festgelegte Nutzung erworben. Jede Verletzung der Urheberrechte des Auftragnehmers zieht Schadenersatzansprüche nach sich, wobei in einem solchen Fall volle Genugtuung zu leisten ist.
-                        6.2. Die Anfertigung von Kopien für Archiv- und Datensicherungszwecke ist dem Auftraggeber unter der Bedingung gestattet, dass in der Software kein ausdrückliches Verbot des Lizenzgebers oder Dritter enthalten ist, und dass sämtliche Copyright- und Eigentumsvermerke in diese Kopien unverändert mit übertragen werden.
-                        6.3. Sollte für die Herstellung von Interoperabilität der gegenständlichen Software die Offenlegung der Schnittstellen erforderlich sein, ist dies vom Auftraggeber gegen Kostenvergütung beim Auftragnehmer zu beauftragen. Kommt der Auftragnehmer dieser Forderung nicht nach und erfolgt eine Dekompilierung gemäß Urheberrechtsgesetz, sind die Ergebnisse ausschließlich zur Herstellung der Interoperabilität zu verwenden. Missbrauch hat Schadenersatz zur Folge.
-                        7. Rücktrittsrecht
-                        7.1. Für den Fall der Überschreitung einer vereinbarten Lieferzeit aus alleinigem Verschulden oder rechtswidrigem Handeln des Auftragnehmers ist der Auftraggeber berechtigt, mittels eingeschriebenen Briefes vom betreffenden Auftrag zurückzutreten, wenn auch innerhalb der angemessenen Nachfrist die vereinbarte Leistung in wesentlichen Teilen nicht erbracht wird und den Auftraggeber daran kein Verschulden trifft.
-                        7.2. Höhere Gewalt, Arbeitskonflikte, Naturkatastrophen und Transportsperren sowie sonstige Umstände, die außerhalb der Einflussmöglichkeit des Auftragnehmers liegen, entbinden den Auftragnehmer von der Lieferverpflichtung bzw. gestatten ihm eine Neufestsetzung der vereinbarten Lieferzeit.
-                        7.3. Stornierungen durch den Auftraggeber sind nur mit schriftlicher Zustimmung des Auftragnehmers möglich. Ist der Auftragnehmer mit einem Storno einverstanden, so hat er das Recht, neben den erbrachten Leistungen und aufgelaufenen Kosten eine Stornogebühr in der Höhe von 30% des noch nicht abgerechneten Auftragswertes des Gesamtprojektes zu verrechnen.
-                        8. Gewährleistung, Wartung, Änderungen
-                        8.1. Mängelrügen sind nur gültig, wenn sie reproduzierbare Mängel betreffen und wenn sie innerhalb von 4 Wochen nach Lieferung der vereinbarten Leistung bzw. bei Individualsoftware nach Programmabnahme gemäß Pkt. 2.4. schriftlich dokumentiert erfolgen. Im Falle der Gewährleistung hat Verbesserung jedenfalls Vorrang vor Preisminderung oder Wandlung. Bei gerechtfertigter Mängelrüge werden die Mängel in angemessener Frist behoben, wobei der Auftraggeber dem Auftragnehmer alle zur Untersuchung und Mängelbehebung erforderlichen Maßnahmen ermöglicht.
-                        Die Vermutung der Mangelhaftigkeit gem. § 924 ABGB gilt als ausgeschlossen.
-                        8.2. Korrekturen und Ergänzungen, die sich bis zur Übergabe der vereinbarten Leistung aufgrund organisatorischer und programmtechnischer Mängel, welche vom Auftragnehmer zu vertreten sind, als notwendig erweisen, werden kostenlos vom Auftragnehmer durchgeführt.
-                        8.3. Kosten für Hilfestellung, Fehldiagnose sowie Fehler- und Störungsbeseitigung, die vom Auftraggeber zu vertreten sind sowie sonstige Korrekturen, Änderungen und Ergänzungen werden vom Auftragnehmer gegen Berechnung durchgeführt. Dies gilt auch für die Behebung von Mängeln, wenn Programmänderungen, Ergänzungen oder sonstige Eingriffe vom Auftraggeber selbst oder von dritter Seite vorgenommen worden sind.
-                        8.4. Ferner übernimmt der Auftragnehmer keine Gewähr für Fehler, Störungen oder Schäden, die auf unsachgemäße Bedienung, geänderter Betriebssystemkomponenten, Schnittstellen und Parameter, Verwendung ungeeigneter Organisationsmittel und Datenträger, soweit solche vorgeschrieben sind, anormale Betriebsbedingungen (insbesondere Abweichungen von den Installations- und Lagerbedingungen) sowie auf Transportschäden zurückzuführen sind.
-                        8.5. Für Programme, die durch eigene Programmierer des Auftraggebers bzw. Dritte nachträglich verändert werden, entfällt jegliche Gewährleistung durch den Auftragnehmer.
-                        8.6. Soweit Gegenstand des Auftrages die Änderung oder Ergänzung bereits bestehender Programme ist, bezieht sich die Gewährleistung auf die Änderung oder Ergänzung.
-                        Die Gewährleistung für das ursprüngliche Programm lebt dadurch nicht wieder auf.
-                        9. Haftung
-                        Der Auftragnehmer haftet für Schäden, sofern ihm Vorsatz oder grobe Fahrlässigkeit nachgewiesen werden, im Rahmen der gesetzlichen Vorschriften. Die Haftung für leichte Fahrlässigkeit ist ausgeschlossen.
-                        Der Ersatz von Folgeschäden und Vermögensschäden, nicht erzielten Ersparnissen, Zinsenverlusten und von Schäden aus Ansprüchen Dritter gegen den Auftragnehmer ist in jedem Fall, soweit gesetzlich zulässig, ausgeschlossen.
-                        10. Loyalität
-                        Die Vertragspartner verpflichten sich zur gegenseitigen Loyalität. Sie werden jede Abwerbung und Beschäftigung, auch über Dritte, von Mitarbeitern, die an der Realisierung der Aufträge gearbeitet haben, des anderen Vertragspartners während der Dauer des Vertrages und 12 Monate nach Beendigung des Vertrages unterlassen. Der dagegen verstoßende Vertragspartner ist verpflichtet, pauschalierten Schadenersatz in der Höhe eines Jahresgehaltes des Mitarbeiters zu zahlen.
-                        11. Datenschutz, Geheimhaltung
-                        Der Auftragnehmer verpflichtet seine Mitarbeiter, die Bestimmungen gemäß §15 des Datenschutzgesetzes einzuhalten.
-                        12. Sonstiges
-                        Sollten einzelne Bestimmungen dieses Vertrages unwirksam sein oder unwirksam werden, so wird hierdurch der übrige Inhalt dieses Vertrages nicht berührt. Die Vertragspartner werden partnerschaftlich zusammenwirken, um eine Regelung zu finden, die den unwirksamen Bestimmungen möglichst nahe kommt.
-                        13. Schlussbestimmungen
-                        Soweit nicht anders vereinbart, gelten die zwischen Vollkaufleuten zur Anwendung kommenden gesetzlichen Bestimmungen ausschließlich nach österreichischem Recht, auch dann, wenn der Auftrag im Ausland durchgeführt wird. Für eventuelle Streitigkeiten gilt ausschließlich die örtliche Zuständigkeit des sachlich zuständigen Gerichtes für den Geschäftssitz des Auftragnehmers als vereinbart. Für den Verkauf an Verbraucher im Sinne des Konsumentenschutzgesetzes gelten die vorstehenden Bestimmungen nur insoweit, als das Konsumentenschutzgesetz nicht zwingend andere Bestimmungen vorsieht.
+                        <strong>
+                            Vorbemerkung
+                        </strong>
                     </p>
-                    <h2>
-                        Datenschutzbestimmungen
-                    </h2>
                     <p>
-                        Gegenstand der Datenschutzbestimmungen
-                        Wir, die Lorem Ipsum Mediengesellschaft m.b.H. mit Sitz in Graz (im folgenden Lorem Ipsum genannt) nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch und funktionell notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.
-                        Die nachfolgende Erklärung gibt Ihnen einen Überblick darüber, wie wir diesen Schutz gewährleisten und welche Art von Daten zu welchem Zweck erhoben werden.
-                        Datenverarbeitung auf dieser Internetseite
-                        Lorem Ipsum erhebt und speichert automatisch in ihren Server Log Files Informationen, die Ihr Browser an uns übermittelt. Dies sind:
-                        Browsertyp/ -version
-                        verwendetes Betriebssystem
-                        Referrer URL (die zuvor besuchte Seite)
-                        Hostname des zugreifenden Rechners (IP Adresse)
-                        Uhrzeit der Serveranfrage.
-                        Diese Daten sind für Lorem Ipsum nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen, die Daten werden zudem nach einer statistischen Auswertung gelöscht.
-                        Weiters nutzt diese Website zur Optimierung des Angebots Google Analytics, einen Webanalysedienst der Google Inc. („Google“) sowie Google Website Optimizer, ein Dienst zur Optimierung von Internetseiten. Google Analytics sowie Google Website Optimizer verwenden sog. „Cookies“, Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglicht. Die durch den Cookie erzeugten Informationen über Ihre Benutzung diese Website (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in den USA übertragen und dort gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten für die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird Google diese Informationen gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten der Google in Verbindung bringen. Sie können die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website voll umfänglich nutzen können. Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.
-                        Cookies
-                        Die Internetseiten verwenden an mehreren Stellen so genannte Cookies. Sie dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert. Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies“. Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren.
-                        Newsletter
-                        Wenn Sie den auf der Webseite angebotenen Newsletter empfangen möchten, benötigen wir von Ihnen eine valide Email-Adresse sowie Informationen, die uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen Email-Adresse sind bzw. deren Inhaber mit dem Empfang des Newsletters einverstanden ist. Weitere Daten werden nicht erhoben.
-                        Ihre Einwilligung zur Speicherung der Daten, der Email-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen.
-                        Auskunftsrecht
-                        Sie haben jederzeit das Recht auf Auskunft über die bezüglich Ihrer Person gespeicherten Daten, deren Herkunft und Empfänger sowie den Zweck der Speicherung. Auskunft über die gespeicherten Daten gibt der Datenschutzbeauftragte von Lorem Ipsum.
-                        Weitere Informationen
-                        Ihr Vertrauen ist uns wichtig. Daher möchten wir Ihnen jederzeit Rede und Antwort bezüglich der Verarbeitung Ihrer personenbezogenen Daten stehen. Wenn Sie Fragen haben, die Ihnen diese Datenschutzerklärung nicht beantworten konnte oder wenn Sie zu einem Punkt vertiefte Informationen wünschen, wenden Sie sich bitte jederzeit an den Datenschutzbeauftragten von Lorem Ipsum.
+                        BITTE LESEN SIE DIE FOLGENDEN LIZENZBEDINGUNGEN VOR NUTZUNG DER SOFTWARE VOLLSTÄNDIG UND AUFMERKSAM DURCH. DURCH NUTZUNG DER SOFTWARE STIMMEN SIE DIESEN LIZENZBEDINGUNGEN ZU.
+                    </p>
+                    <p>
+                        Sie können diese Bedingungen jederzeit in der Software anzeigen lassen.
+                        Durch die Bestätigung der Lizenzbedingungen bzw. durch die Nutzung der Software stimmen Sie dem Abschluss eines Lizenzvertrags zwischen Ihnen und der FlickStuff UG (haftungsbeschränkt) zu. Sie erkennen damit den Inhalt der Lizenzbedingungen als für Sie  verbindlich an. Wenn Sie die Nutzungs- und Lizenzbedingungen nicht akzeptieren möchten, so bestätigen Sie die Lizenzbedingungen nicht und brechen Sie die Nutzung der Software ab. In diesem Fall ist es Ihnen nicht gestattet, die Software zu nutzen.
+                    </p>
+                    <p>
+                        <strong>
+                            § 1 Begriffsbestimmungen
+                        </strong>
+                    </p>
+                    <p>
+                        Lizenznehmer: Die juristische oder natürliche Person, der das Recht zur Nutzung dieser Software eingeräumt wird.
+                    </p>
+                    <p>
+                        Lizenzgeber: FlickStuff
+                    </p>
+                    <p>
+                        Software: Die vorliegende Software des Lizenzgebers "TVTongue".
+                    </p>
+                    <p>
+                        <strong>
+                            § 2 Vervielfältigungsrechte
+                        </strong>
+                    </p>
+                    <p>
+                        (1) Sie dürfen das gelieferte Programm vervielfältigen, soweit die jeweilige Vervielfältigung für die Benutzung des Programms notwendig ist. Zu den notwendigen Vervielfältigungen zählt insbesondere das Laden des Programms in den Arbeitsspeicher.
+                        <br/>
+                        (2) Über die durch diese Vereinbarung eingeräumten Nutzungsrechte hinaus erwirbt der Lizenznehmer an der Software keinerlei Rechte. Der Lizenzgeber behält sich insbesondere sämtliche Rechte zur entgeltlichen oder unentgeltlichen Verbreitung, Vorführung, Ausstellung sowie Veröffentlichung der Software vor. Gleiches gilt für die Bearbeitungs- und Vervielfältigungsrechte, soweit nicht ausdrücklich anders vereinbart ist. Der Lizenzgeber ist alleiniger Inhaber aller Marken- und sonstigen Schutzrechte an der Software.
+                        <br/>
+                        (3) Der Lizenznehmer erwirbt keinerlei Rechte an dem Sourcecode der Software. Der Lizenznehmer erkennt an, dass der Sourcecode Alleineigentum des Lizenzgebers ist.
+                        <br/>
+                        (4) Der Lizenznehmer kann die Software nur bei einer bestehenden Internetverbindung starten und nutzen. Die Internetverbindung ist nicht Bestandteil des Lizenzvertrages.
+                    </p>
+                    <p>
+                        <strong>
+                            § 3 Erlöschen von Nutzungsrechten
+                        </strong>
+                    </p>
+                    <p>
+                        (1) Sofern der Lizenznehmer gegen die in dieser Vereinbarung in § 2 festgelegten Lizenzbedingungen verletzt, erlischt das Recht des Lizenznehmers zur Nutzung der Software, ohne dass es hierzu einer Kündigung des Lizenzvertrages bedarf.
+                        <br/>
+                        (2) Jeder Verstoß gegen andere wesentliche Bestimmungen dieses Lizenzvertrags führt zum Erlöschen des Nutzungsrechts an der Software. Im Falle des Missbrauchs behalten wir uns ausdrücklich vor, die jeweiligen Lizenznehmer von der Nutzung von TVTongue auszuschließen. Das Recht zur Sperrung besteht auch bei Vorliegen entsprechender objektiver Verdachtsmomente.
+                        <br/>
+                        (3) Der Lizenzgeber behält sich darüber hinaus vor, Nutzer ohne Angaben von Gründen von der Nutzung der Software auszuschließen sowie den Lizenzvertrag ohne Angabe von Gründen zu terminieren.
+                        <br/>
+                        (4) Die sonstigen gesetzlichen Regelungen bleiben unberührt.
+                    </p>
+                    <p>
+                        <strong>
+                            § 4 Technische Verfügbarkeit
+                        </strong>
+                    </p>
+                    <p>
+                        (1) Zum Start und zur Nutzung der Software sind eine Internetverbindung und ein Zugriff auf die Webseite von TVTongue notwendig.
+                        <br/>
+                        (2) Die Datenkommunikation über das Internet und die jeweiligen Downloadplattformen der Anbieter (z.B. von Apple, Google, Microsoft) kann nach dem derzeitigen Stand der Technik nicht fehlerfrei und/oder jederzeit verfügbar gewährleistet werden. Der Lizenzgeber haftet insoweit nicht für die ständige und ununterbrochene Verfügbarkeit der Software.
+                    </p>
+                    <p>
+                        <strong>
+                            § 5 Gewährleistung und Haftung
+                        </strong>
+                    </p>
+                    <p>
+                        Für die Haftung des Lizenzgebers gegenüber dem Lizenznehmer gelten die gesetzlichen Bestimmungen.
+                    </p>
+                    <p>
+                        <strong>
+                            § 6 Schlussbestimmungen
+                        </strong>
+                    </p>
+                    <p>
+                        (1) Änderungen oder Ergänzungen dieser Geschäftsbedingungen bedürfen der Schrift- oder Textform. Dies gilt auch für die Aufhebung des Schrift- bzw., Textformerfordernisses.
+                        <br/>
+                        (2) Es gilt das Recht der Bundesrepublik Deutschland. Zwingende Bestimmungen des Staates, in dem der Nutzer seinen gewöhnlichen Aufenthalt hat, bleiben unberührt. Das einheitliche UN-Kaufrecht (Convention of Contracts for International Sale of Goods vom 11.04.1980, UN-CITRAL-Kaufrecht) wird ausgeschlossen.
+                        <br/>
+                        (3) Sollten einzelne Bestimmungen dieses Vertrages unwirksam sein oder den gesetzlichen Regelungen widersprechen, so wird hierdurch der Vertrag im Übrigen nicht berührt. Die unwirksame Bestimmung wird von den Vertragsparteien einvernehmlich durch eine rechtswirksame Bestimmung ersetzt, welche dem wirtschaftlichen Sinn und Zweck der unwirksamen Bestimmung am nächsten kommt. Die vorstehende Regelung gilt entsprechend bei Regelungslücken.
+                    </p>
+                    <p>
+                        <strong>
+                            Datenschutzbestimmungen
+                        </strong>
+                    </p>
+                    <p>
+                        Die Datenschutzbestimmungen entnehmen Sie mit dem vorhergesehenen Menü-Unterpunkt.
+                    </p>
+                    <p>
+                        <strong>
+                            Datenschutzerklärung
+                        </strong>
+                    </p>
+                    <p>
+                        <strong>
+                            Geltungsbereich
+                        </strong>
+                    </p>
+                    <p>
+                        Diese Datenschutzerklärung klärt Nutzer über die Art, den Umfang und Zwecke der Erhebung und Verwendung personenbezogener Daten durch den verantwortlichen Anbieter [HIER BITTE IHREN NAMEN, ADRESSE, EMAIL UND TELEFONNUMMER EINTRAGEN] auf dieser Website (im folgenden “Angebot”) auf.
+                        <br />
+                        <br />
+                        Die rechtlichen Grundlagen des Datenschutzes finden sich im Bundesdatenschutzgesetz (BDSG) und dem Telemediengesetz (TMG).
+                        <br />
+                        <br />
+                    </p>
+                    <p>
+                        <strong>
+                            Zugriffsdaten/ Server-Logfiles
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Der Anbieter (beziehungsweise sein Webspace-Provider) erhebt Daten über jeden Zugriff auf das Angebot (so genannte Serverlogfiles). Zu den Zugriffsdaten gehören:
+                            <br />
+                            <br />
+                            Name der abgerufenen Webseite, Datei, Datum und Uhrzeit des Abrufs, übertragene Datenmenge, Meldung über erfolgreichen Abruf, Browsertyp nebst Version, das Betriebssystem des Nutzers, Referrer URL (die zuvor besuchte Seite), IP-Adresse und der anfragende Provider.
+                            <br />
+                            <br />
+                            Der Anbieter verwendet die Protokolldaten nur für statistische Auswertungen zum Zweck des Betriebs, der Sicherheit und der Optimierung des Angebotes. Der Anbieterbehält sich jedoch vor, die Protokolldaten nachträglich zu überprüfen, wenn aufgrund konkreter Anhaltspunkte der berechtigte Verdacht einer rechtswidrigen Nutzung besteht.
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Umgang mit personenbezogenen Daten
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Personenbezogene Daten sind Informationen, mit deren Hilfe eine Person bestimmbar ist, also Angaben, die zurück zu einer Person verfolgt werden können. Dazu gehören der Name, die Emailadresse oder die Telefonnummer. Aber auch Daten über Vorlieben, Hobbies, Mitgliedschaften oder welche Webseiten von jemandem angesehen wurden zählen zu personenbezogenen Daten.
+                            <br />
+                            <br />
+                            Personenbezogene Daten werden von dem Anbieter nur dann erhoben, genutzt und weiter gegeben, wenn dies gesetzlich erlaubt ist oder die Nutzer in die Datenerhebung einwilligen.
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Kontaktaufnahme
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Bei der Kontaktaufnahme mit dem Anbieter (zum Beispiel per Kontaktformular oder E-Mail) werden die Angaben des Nutzers zwecks Bearbeitung der Anfrage sowie für den Fall, dass Anschlussfragen entstehen, gespeichert.
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Kommentare und Beiträge
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Wenn Nutzer Kommentare im Blog oder sonstige Beiträge hinterlassen, werden ihre IP-Adressen gespeichert. Das erfolgt zur Sicherheit des Anbieters, falls jemand in Kommentaren und Beiträgen widerrechtliche Inhalte schreibt (Beleidigungen, verbotene politische Propaganda, etc.). In diesem Fall kann der Anbieter selbst für den Kommentar oder Beitrag belangt werden und ist daher an der Identität des Verfassers interessiert.
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Kommentarabonnements
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Die Nachfolgekommentare können durch Nutzer abonniert werden. Die Nutzer erhalten eine Bestätigungsemail, um zu überprüfen, ob sie der Inhaber der eingegebenen Emailadresse sind. Nutzer können laufende Kommentarabonnements jederzeit abbestellen. Die Bestätigungsemail wird Hinweise dazu enthalten.
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Newsletter
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Mit dem Newsletter informieren wir Sie über uns und unsere Angebote.
+                            <br />
+                            <br />
+                            Wenn Sie den Newsletter empfangen möchten, benötigen wir von Ihnen eine valide Email-Adresse sowie Informationen, die uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen Email-Adresse sind bzw. deren Inhaber mit dem Empfang des Newsletters einverstanden ist. Weitere Daten werden nicht erhoben. Diese Daten werden nur für den Versand der Newsletter verwendet und werden nicht an Dritte weiter gegeben.
+                            <br />
+                            <br />
+                            Mit der Anmeldung zum Newsletter speichern wir Ihre IP-Adresse und das Datum der Anmeldung. Diese Speicherung dient alleine dem Nachweis im Fall, dass ein Dritter eine Emailadresse missbraucht und sich ohne Wissen des Berechtigten für den Newsletterempfang anmeldet.
+                            <br />
+                            <br />
+                            Ihre Einwilligung zur Speicherung der Daten, der Email-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen. Der Widerruf kann über einen Link in den Newslettern selbst, in Ihrem Profilbereich oder per Mitteilung an die oben stehenden Kontaktmöglichkeiten erfolgen.
+                            <br />
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Einbindung von Diensten und Inhalten Dritter
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Es kann vorkommen, dass innerhalb dieses Onlineangebotes Inhalte Dritter, wie zum Beispiel Videos von YouTube, Kartenmaterial von Google-Maps, RSS-Feeds oder Grafiken von anderen Webseiten eingebunden werden. Dies setzt immer voraus, dass die Anbieter dieser Inhalte (nachfolgend bezeichnet als "Dritt-Anbieter") die IP-Adresse der Nutzer wahr nehmen. Denn ohne die IP-Adresse, könnten sie die Inhalte nicht an den Browser des jeweiligen Nutzers senden. Die IP-Adresse ist damit für die Darstellung dieser Inhalte erforderlich. Wir bemühen uns nur solche Inhalte zu verwenden, deren jeweilige Anbieter die IP-Adresse lediglich zur Auslieferung der Inhalte verwenden. Jedoch  haben wir keinen Einfluss darauf, falls die Dritt-Anbieter die IP-Adresse z.B. für statistische Zwecke speichern. Soweit dies uns bekannt ist, klären wir die Nutzer darüber auf.
+                            <br />
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Getty Images
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Innerhalb dieses Angebotes können die Bilder des Stockbildanbieters Getty Images eingebunden werden. Die Bilder sind an einem Rahmen mit dem Hinweis "Getty Images" erkennbar. Die Darstellung dieser Bilder setzt voraus, dass Getty Images die IP-Adresse der Nutzer wahr nimmt, damit die Bilder an den Browser der Nutzer ausgeliefert werden können. Die IP-Adresse ist damit für die Darstellung dieser Inhalte erforderlich. Nach derzeitigem Wissensstand wird die IP-Adresse nur für diesen Zweck verwendet.  Jedoch  hat der Anbieter keinen Einfluss darauf, falls Getty Images die IP-Adresse z.B. für statistische Zwecke speichert. Soweit dies dem Anbieter bekannt ist, werden die Nutzer aufklärt, bzw. die Bilder entfernt.
+                            <br />
+                            Weitere Informationen erhalten Sie in der Datenschutzerklärung von Getty Images: http://www.gettyimages.de/Corporate/PrivacyPolicy.aspx
+                            <br />
+                            <br />
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Cookies
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Cookies sind kleine Dateien, die es ermöglichen, auf dem Zugriffsgerät der Nutzer (PC, Smartphone o.ä.) spezifische, auf das Gerät bezogene Informationen zu speichern. Sie dienen zum einem der Benutzerfreundlichkeit von Webseiten und damit den Nutzern (z.B. Speicherung von Logindaten). Zum anderen dienen sie, um die statistische Daten der Webseitennutzung zu erfassen und sie zwecks Verbesserung des Angebotes analysieren zu können. Die Nutzer können auf den Einsatz der Cookies Einfluss nehmen. Die meisten Browser verfügen eine Option mit der das Speichern von Cookies eingeschränkt oder komplett verhindert wird. Allerdings wird darauf hingewiesen, dass die Nutzung und insbesondere der Nutzungskomfort ohne Cookies eingeschränkt werden.
+                            <br />
+                            <br />
+                            Sie können viele Online-Anzeigen-Cookies von Unternehmen über die US-amerikanische  Seite
+                            <a href="http://www.aboutads.info/choices/">
+                                http://www.aboutads.info/choices/
+                            </a>
+                            oder die EU-Seite
+                            <a href="http://www.youronlinechoices.com/uk/your-ad-choices/ ">
+                                http://www.youronlinechoices.com/uk/your-ad-choices/
+                            </a>
+                            verwalten.
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Registrierfunktion
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Die im Rahmen der Registrierung eingegebenen Daten werden für die Zwecke der Nutzung des Angebotes verwendet. Die Nutzer können über angebots- oder registrierungsrelevante Informationen, wie Änderungen des Angebotsumfangs oder technische Umstände per E-Mail informiert werden. Die erhobenen Daten sind aus der Eingabemaske im Rahmen der Registrierung ersichtlich. Dazu gehören [HIER BITTE DIE ERHOBENEN DATEN EINGEBEN, Z.B. NAME, POSTALISCHE ADRESSE, E-MAIL-ADRESSE, IP-ADRESSE UND DEREN ZWECK, ZUM BEISPIEL COMMUNITY ODER PRODUKTESTS].
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Google Analytics
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Dieses Angebot benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“). Google Analytics verwendet sog. „Cookies“, Textdateien, die auf Computer der Nutzer gespeichert werden und die eine Analyse der Benutzung der Website durch sie ermöglichen. Die durch den Cookie erzeugten Informationen über Benutzung dieser Website durch die Nutzer werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert.
+                            <br />
+                            <br />
+                            Im Falle der Aktivierung der IP-Anonymisierung auf dieser Webseite, wird die IP-Adresse der Nutzer von Google jedoch innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Die IP-Anonymisierung ist auf dieser Website aktiv. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um die Nutzung der Website durch die Nutzer auszuwerten, um Reports über die Websiteaktivitäten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegenüber dem Websitebetreiber zu erbringen.
+                            <br />
+                            <br />
+                            Die im Rahmen von Google Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt. Die Nutzer können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; Dieses Angebot weist die Nutzer jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können. Die Nutzer können darüber hinaus die Erfassung der durch das Cookie erzeugten und auf ihre Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren:
+                            <a href="http://tools.google.com/dlpage/gaoptout?hl=de">
+                                http://tools.google.com/dlpage/gaoptout?hl=de
+                            </a>
+                            .
+                            <br />
+                            <br />
+                            Alternativ zum Browser-Add-On oder innerhalb von Browsern auf mobilen Geräten,
+                            <a id="GAOptOut" title="Google Analytics Opt-Out-Cookie setzen" href="javascript:gaOptout()">
+                                klicken Sie bitte diesen Link
+                            </a>
+                            , um die Erfassung durch Google Analytics innerhalb dieser Website zukünftig zu verhindern. Dabei wird ein Opt-Out-Cookie auf Ihrem Gerät abgelegt. Löschen Sie Ihre Cookies, müssen Sie diesen Link erneut klicken.
+                            <br />
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Verwendung von Facebook Social Plugins
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Dieses Angebot verwendet Social Plugins ("Plugins")  des sozialen Netzwerkes facebook.com, welches von der Facebook Ireland Ltd., 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland betrieben wird ("Facebook"). Die Plugins sind an einem der Facebook Logos erkennbar (weißes „f“ auf blauer Kachel, den Begriffen "Like", "Gefällt mir" oder einem „Daumen hoch“-Zeichen) oder sind mit dem Zusatz "Facebook Social Plugin" gekennzeichnet. Die Liste und das Aussehen der Facebook Social Plugins kann hier eingesehen werden:
+                            <a href="https://developers.facebook.com/docs/plugins/">
+                                https://developers.facebook.com/docs/plugins/
+                            </a>
+                            .
+                            <br />
+                            <br />
+                            Wenn ein Nutzer eine Webseite dieses Angebots aufruft, die ein solches Plugin enthält, baut sein Browser eine direkte Verbindung mit den Servern von Facebook auf. Der Inhalt des Plugins wird von Facebook direkt an Ihren Browser übermittelt und von diesem in die Webseite eingebunden. Der Anbieter hat daher keinen Einfluss auf den Umfang der Daten, die Facebook mit Hilfe dieses Plugins erhebt und informiert die Nutzer daher entsprechend seinem
+                            <a href="http://www.facebook.com/help/?faq=17512">
+                                Kenntnisstand
+                            </a>
+                            :
+                            <br />
+                            <br />
+                            Durch die Einbindung der Plugins erhält Facebook die Information, dass ein Nutzer die entsprechende Seite des Angebots aufgerufen hat. Ist der Nutzer bei Facebook eingeloggt, kann Facebook den Besuch seinem Facebook-Konto zuordnen. Wenn Nutzer mit den Plugins interagieren, zum Beispiel den Like Button betätigen oder einen Kommentar abgeben, wird die entsprechende Information von Ihrem Browser direkt an Facebook übermittelt und dort gespeichert. Falls ein Nutzer kein Mitglied von Facebook ist, besteht trotzdem die Möglichkeit, dass Facebook seine IP-Adresse in Erfahrung bringt und speichert. Laut Facebook wird in Deutschland nur eine anonymisierte IP-Adresse gespeichert.
+                            <br />
+                            <br />
+                            Zweck und Umfang der Datenerhebung und die weitere Verarbeitung und Nutzung der Daten durch Facebook sowie die diesbezüglichen Rechte und Einstellungsmöglichkeiten zum Schutz der Privatsphäre der Nutzer , können diese den Datenschutzhinweisen von Facebook entnehmen:
+                            <a href="https://www.facebook.com/about/privacy/">
+                                https://www.facebook.com/about/privacy/
+                            </a>
+                            .
+                            <br />
+                            <br />
+                            Wenn ein Nutzer Facebookmitglied ist und nicht möchte, dass Facebook über dieses Angebot Daten über ihn sammelt und mit seinen bei Facebook gespeicherten Mitgliedsdaten verknüpft, muss er sich vor dem  Besuch des Internetauftritts bei Facebook ausloggen. Weitere Einstellungen und Widersprüche zur Nutzung von Daten für Werbezwecke, sind innerhalb der Facebook-Profileinstellungen möglich:
+                            <a href="https://www.facebook.com/settings?tab=ads">
+                                https://www.facebook.com/settings?tab=ads
+                            </a>
+                            .
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Twitter
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Dieses Angebot nutzt die
+                            <a href="https://twitter.com/about/resources/buttons">
+                                Schaltflächen des Dienstes Twitter
+                            </a>
+                            . Diese Schaltflächen werden angeboten durch die Twitter Inc., 795 Folsom St., Suite 600, San Francisco, CA 94107, USA. Sie sind an Begriffen wie "Twitter" oder "Folge", verbunden mit einem stillisierten blauen Vogel erkennbar. Mit Hilfe der Schaltflächen ist es möglich einen Beitrag oder Seite dieses Angebotes bei Twitter zu teilen oder dem Anbieter bei Twitter zu folgen.
+                            <br />
+                            <br />
+                            Wenn ein Nutzer eine Webseite dieses Internetauftritts aufruft, die einen solchen Button enthält, baut sein Browser eine direkte Verbindung mit den Servern von Twitter auf. Der Inhalt des Twitter-Schaltflächen wird von Twitter direkt an den Browser des Nutzers übermittelt. Der Anbieter hat daher keinen Einfluss auf den Umfang der Daten, die Twitter mit Hilfe dieses Plugins erhebt und informiert die Nutzer entsprechend seinem Kenntnisstand. Nach diesem wird lediglich die IP-Adresse des Nutzers die URL der jeweiligen Webseite beim Bezug des Buttons mit übermittelt, aber nicht für andere Zwecke, als die Darstellung des Buttons, genutzt.
+                            <br />
+                            Weitere Informationen hierzu finden sich in der Datenschutzerklärung von Twitter unter http://twitter.com/privacy.
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Google AdSense
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            Dieses Angebot benutzt Google AdSense, einen Dienst zum Einbinden von Werbeanzeigen der Google Inc. ("Google"). Google AdSense verwendet sog. "Cookies", Textdateien, die auf dem Computer der Nutzer gespeichert werden und die eine Analyse der Benutzung der Website ermöglicht. Google AdSense verwendet auch so genannte Web Beacons (unsichtbare Grafiken). Durch diese Web Beacons können Informationen wie der Besucherverkehr auf den Seiten dieses Angebots ausgewertet werden.
+                            <br />
+                            <br />
+                            Die durch Cookies und Web Beacons erzeugten Informationen über die Benutzung dieser Website (einschließlich der IP-Adresse der Nutzer) und Auslieferung von Werbeformaten werden an einen Server von Google in den USA übertragen und dort gespeichert. Diese Informationen können von Google an Vertragspartner von Google weiter gegeben werden. Google wird Ihre IP-Adresse jedoch nicht mit anderen von Ihnen gespeicherten Daten zusammenführen.
+                            <br />
+                            <br />
+                            Die Nutzer können die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern; der Anbieter weist die Nutzer jedoch darauf hin, dass sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieses Angebotes voll umfänglich nutzen können. Durch die Nutzung dieser Website erklären die Nutzer sich mit der Bearbeitung der über sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Amazon-Partnerprogramm
+                        </strong>
+                    </p>
+                    <p>
+                        <span class="sd-muster-content">
+                            [Bitte fügen Sie hier Ihren Namen ein] ist Teilnehmer des Partnerprogramms von Amazon EU, das zur Bereitstellung eines Mediums für Websites konzipiert wurde, mittels dessen durch die Platzierung von Werbeanzeigen und Links zu [bitte fügen Sie hier den zutreffenden Namen der Website ein (Amazon.co.uk / Local.Amazon.co.uk / Amazon.de / de.BuyVIP.com / Amazon.fr / Amazon.it / it.BuyVIP.com / Amazon.es / es.BuyVIP.com )] Werbekostenerstattung verdient werden kann. Amazon setzt Cookies ein, um die Herkunft der Bestellungen nachvollziehen zu können. Unter anderem kann Amazon erkennen, dass Sie den Partnerlink auf dieser Website geklickt haben. Weitere Informationen zur Datennutzung durch Amazon erhalten Sie in der Datenschutzerklärung des Unternehmens: http://www.amazon.de/gp/help/customer/display.html/ref=footer_privacy?ie=UTF8&nodeId=3312401
+                        </span>
+                    </p>
+                    <p>
+                        <strong>
+                            Widerruf, Änderungen, Berichtigungen und Aktualisierungen
+                        </strong>
+                    </p>
+                    <p>
+                        Der Nutzer hat das Recht, auf Antrag unentgeltlich Auskunft zu erhalten über die personenbezogenen Daten, die über ihn gespeichert wurden. Zusätzlich hat der Nutzer das Recht auf Berichtigung unrichtiger Daten, Sperrung und Löschung seiner personenbezogenen Daten, soweit dem keine gesetzliche Aufbewahrungspflicht entgegensteht.
+                        <br />
+                    </p>
+                    <p>
+                        Vom Websiteinhaber angepasst
+                        <a href="http://rechtsanwalt-schwenke.de/smmr-buch/datenschutz-muster-generator-fuer-webseiten-blogs-und-social-media/">
+                            <strong>
+                                Datenschutz-Muster von Rechtsanwalt Thomas Schwenke - I LAW it
+                            </strong>
+                        </a>
                     </p>
                 </div>
-
-
                 <!-- Next button -->
                 <div class="next-button">
                     <button light clear (click)="clickedAccept()">
-                        Ich akzeptiere
-                        <ion-icon ios="ios-arrow-forward" md="md-arrow-dropright">
-                        </ion-icon>
+                        Accept
                     </button>
                 </div>
             </div>
-
         </ion-slide>
     </ion-slides>
 </ion-content>
