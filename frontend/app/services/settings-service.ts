@@ -78,7 +78,8 @@ export class SettingsService {
 			name: "Name",
 			id: "",
 			language: "en",
-			didRegister: false
+			didRegister: false,
+			didAccept: false
 		}
 	}
 
@@ -134,9 +135,12 @@ export class SettingsService {
 
 	// User
 	// ------------------------------
+
+	// register with name and mail
 	public registerUser(userName: string): Promise<boolean> {
 		this.settings.name = userName
 		this.settings.didRegister = true
+		this.didUserAccept()
 		this.saveSettings()
 		return Promise.resolve(true)
 		// return this.http
@@ -150,6 +154,12 @@ export class SettingsService {
 		// 	})
 	}
 
+	// accept privacy and usage terms
+	public didUserAccept(){
+		this.settings.didAccept = true
+		this.saveSettings()
+	}
+
 
 }
 
@@ -158,6 +168,7 @@ export interface ISettings {
 	id: string;
 	language: ILanguage;
 	didRegister: boolean;
+	didAccept: boolean;
 }
 
 type ILanguage = "en" | "de";

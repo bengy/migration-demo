@@ -54,7 +54,7 @@ export class InitPage {
 		private settingsService: SettingsService){
 
 		// If registered we can skip this
-		if(this.settingsService.settings.didRegister){
+		if(this.settingsService.settings.didAccept){
 			this.nav.push(TabsPage)
 		}
 	}
@@ -72,6 +72,7 @@ export class InitPage {
 	}
 
 	clickedAccept(){
+		this.settingsService.didUserAccept()
 		this.nav.push(TabsPage)
 	}
 }

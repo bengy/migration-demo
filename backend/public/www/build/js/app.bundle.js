@@ -62244,7 +62244,7 @@
 	        this.currentIndex = 0;
 	        this.currentLanguage = "Englisch";
 	        // If registered we can skip this
-	        if (this.settingsService.settings.didRegister) {
+	        if (this.settingsService.settings.didAccept) {
 	            this.nav.push(tabs_1.TabsPage);
 	        }
 	    }
@@ -62257,6 +62257,7 @@
 	    InitPage.prototype.clickedNextPage = function () {
 	    };
 	    InitPage.prototype.clickedAccept = function () {
+	        this.settingsService.didUserAccept();
 	        this.nav.push(tabs_1.TabsPage);
 	    };
 	    InitPage = __decorate([
@@ -62264,7 +62265,7 @@
 	            templateUrl: 'build/pages/init-page/init-page.html',
 	            providers: [settings_service_1.SettingsService],
 	            directives: [common_1.COMMON_DIRECTIVES]
-	        }),
+	        }), 
 	        __metadata('design:paramtypes', [http_1.Http, ionic_1.NavParams, ionic_1.NavController, settings_service_1.SettingsService])
 	    ], InitPage);
 	    return InitPage;
@@ -62343,7 +62344,8 @@
 	            name: "Name",
 	            id: "",
 	            language: "en",
-	            didRegister: false
+	            didRegister: false,
+	            didAccept: false
 	        };
 	    };
 	    SettingsService.prototype.getPossibleLanguages = function () {
@@ -62372,9 +62374,11 @@
 	    };
 	    // User
 	    // ------------------------------
+	    // register with name and mail
 	    SettingsService.prototype.registerUser = function (userName) {
 	        this.settings.name = userName;
 	        this.settings.didRegister = true;
+	        this.didUserAccept();
 	        this.saveSettings();
 	        return Promise.resolve(true);
 	        // return this.http
@@ -62386,8 +62390,13 @@
 	        // 		return true
 	        // 	})
 	    };
+	    // accept privacy and usage terms
+	    SettingsService.prototype.didUserAccept = function () {
+	        this.settings.didAccept = true;
+	        this.saveSettings();
+	    };
 	    SettingsService = __decorate([
-	        core_1.Injectable(),
+	        core_1.Injectable(), 
 	        __metadata('design:paramtypes', [http_1.Http])
 	    ], SettingsService);
 	    return SettingsService;
@@ -77360,7 +77369,7 @@
 	// Imports
 	// ------------------------------
 	var events_page_1 = __webpack_require__(364);
-	var info_page_1 = __webpack_require__(367);
+	var info_page_1 = __webpack_require__(365);
 	// Tabs page
 	// ------------------------------
 	var TabsPage = (function () {
@@ -77454,9 +77463,7 @@
 
 
 /***/ },
-/* 365 */,
-/* 366 */,
-/* 367 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
