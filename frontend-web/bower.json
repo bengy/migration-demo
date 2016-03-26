@@ -1,0 +1,27 @@
+{
+  "name": "flickstuff-landingpage",
+  "version": "0.0.1-alpha.0",
+  "authors": [
+    "Dominique Rau <domi.rau@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~4.6.1",
+    "jquery": "~2.2.2",
+    "angular": "~1.5.3",
+    "angular-route": "^1.5.3",
+    "angular-cookies": "~1.5.3",
+    "angular-translate": "~2.11.0",
+    "angular-animate": "~1.5.3",
+    "angular-material": "^1.0.6",
+    "angular-messages": "^1.5.3",
+    "angular-sanitize": "^1.5.3"
+  }
+}

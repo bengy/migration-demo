@@ -1,0 +1,91 @@
+//------------------------------
+//- Event editor view
+//-
+//- Author Dominique Rau
+//- Version 0.0.1-alpha.0
+
+
+//- Event editor
+div(layout='column' layout-fill)
+
+
+
+	//- Navbar
+	md-toolbar
+		.md-toolbar-tools
+			b Event
+			span(flex)
+			md-button(ng-click="eventCtrl.clickedCancel()")
+				| Cancel
+
+
+	//- Container
+	md-content.md-padding(layout='column')
+		.md-inline-form(layout='column' ng-cloak='')
+
+			md-input-container
+				label Title
+				input(ng-model='eventCtrl.editEvent.name')
+
+			div(layout="row")
+				md-input-container(flex)
+					label From
+					input(ng-model='eventCtrl.editEvent.from', type="date")
+
+				md-input-container(flex)
+					label Time
+					input(ng-model='eventCtrl.editEvent.from', type="time", step="1000")
+
+
+			md-input-container(flex)
+				label Description
+				textarea(ng-model='eventCtrl.editEvent.desc' md-maxlength='150' rows='5' md-select-on-focus='')
+
+		md-button.md-primary.md-raised(ng-click="eventCtrl.clickedSave()") Save
+
+					//- md-input-container
+					//- 	label Email
+					//- 	input(ng-model='user.email' type='email')
+			//- md-content(layout-padding='')
+			//- 	div
+			//- 		form(name='userForm')
+			//- 			div(layout-gt-xs='row')
+			//- 				md-input-container.md-block(flex-gt-xs='')
+			//- 					label Company (Disabled)
+			//- 					input(ng-model='user.company' disabled='')
+			//- 				md-datepicker(ng-model='user.submissionDate' md-placeholder='Enter date')
+			//- 			div(layout-gt-sm='row')
+			//- 				md-input-container.md-block(flex-gt-sm='')
+			//- 					label First name
+			//- 					input(ng-model='user.firstName')
+			//- 				md-input-container.md-block(flex-gt-sm='')
+			//- 					label
+			//- 						| Long Last Name That Will Be Truncated And 3 Dots (Ellipsis) Will Appear At The End
+			//- 					input(ng-model='theMax')
+			//- 			md-input-container.md-block
+			//- 				label Address
+			//- 				input(ng-model='user.address')
+			//- 			md-input-container.md-block(md-no-float='')
+			//- 				input(ng-model='user.address2' placeholder='Address 2')
+			//- 			div(layout-gt-sm='row')
+			//- 				md-input-container.md-block(flex-gt-sm='')
+			//- 					label City
+			//- 					input(ng-model='user.city')
+			//- 				md-input-container.md-block(flex-gt-sm='')
+			//- 					label State
+			//- 					md-select(ng-model='user.state')
+			//- 						md-option(ng-repeat='state in states' value='{{state.abbrev}}')
+			//- 							| {{state.abbrev}}
+			//- 				md-input-container.md-block(flex-gt-sm='')
+			//- 					label Postal Code
+			//- 					input(name='postalCode' ng-model='user.postalCode' placeholder='12345' required='' ng-pattern='/^[0-9]{5}$/' md-maxlength='5')
+			//- 					div(ng-messages='userForm.postalCode.$error' role='alert' multiple='')
+			//- 						.my-message(ng-message='required') You must supply a postal code.
+			//- 						.my-message(ng-message='pattern')
+			//- 							| That doesn&apos;t look like a valid postal
+			//- 							| code.
+			//- 						.my-message(ng-message='md-maxlength')
+			//- 							| Don&apos;t use the long version silly...we don&apos;t need to be that specific...
+			//- 			md-input-container.md-block
+			//- 				label Biography
+			//- 				textarea(ng-model='user.biography' md-maxlength='150' rows='5' md-select-on-focus='')

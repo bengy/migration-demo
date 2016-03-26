@@ -1,0 +1,41 @@
+//------------------------------
+//- Main view
+//-
+//- Author Dominique Rau
+//- Version 0.0.1-alpha.0
+
+
+
+//- Container
+div(layout='column' layout-fill)
+
+
+
+	//- Navbar
+	md-toolbar()
+		.md-toolbar-tools
+			b Profugus
+			span(flex)
+			//- md-button
+			//- 	| Button
+
+
+
+	//- Content
+
+	md-tabs(flex, md-stretch-tabs="auto")
+
+
+
+		//- Info tap
+		md-tab(label='Info')
+			md-content.md-padding(layout="column" layout-align="center center")
+				p
+					| This site ist still under construction
+					| Diese Seite befindet sich derzeit im Aufbau.
+				img(src="img/placeholder.construction.png", alt="Construction placeholder")
+
+
+		//- Event tab
+		md-tab(label='Events')
+			event-page
