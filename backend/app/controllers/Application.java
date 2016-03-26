@@ -79,8 +79,8 @@ public class Application extends Controller {
     	ObjectNode status = Json.newObject();
     	String name = json.get("name").textValue();
     	String desc = json.get("desc").textValue();
-    	Long from = Long.parseLong(json.get("from").textValue());
-    	Long to = Long.parseLong(json.get("to").textValue());
+	Long from = json.get("from").longValue();
+	Long to = json.get("to").longValue();
     	//Create when no id is delivered
     	if(json.get("id")==null){
 				event = Event.create(name, desc, from, to);
