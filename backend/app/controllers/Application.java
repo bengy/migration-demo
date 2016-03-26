@@ -13,24 +13,24 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 public class Application extends Controller {
-    
+
 	public static final String STATUS = "status";
-	
+
     public static Result index() {
         return redirect("/index.html");
     }
-    
+
    public static Result getUsers() {
-    	List<User> users = User.find.all(); 
+    	List<User> users = User.find.all();
 
     	return ok(Json.toJson(users));
     }
-    
+
     public static Result getUser(Long id) {
     	User user = User.find.byId(id);
     	return ok(Json.toJson(user));
     }
-    
+
     @BodyParser.Of(BodyParser.Json.class)
     public static Result postUser() {
     	User user=null;
@@ -58,7 +58,7 @@ public class Application extends Controller {
 	    	return ok(status);
     	}
     }
-    
+
     public static Result deleteUser(Long id){
     	ObjectNode status = Json.newObject();
     	User user = User.find.byId(id);
@@ -71,7 +71,7 @@ public class Application extends Controller {
     	}
     	return ok(status);
     }
-    
+
     @BodyParser.Of(BodyParser.Json.class)
     public static Result postEvent() {
     	Event event=null;
@@ -79,8 +79,8 @@ public class Application extends Controller {
     	ObjectNode status = Json.newObject();
     	String name = json.get("name").textValue();
     	String desc = json.get("desc").textValue();
-	Long from = json.get("from").longValue();
-	Long to = json.get("to").longValue();
+    	Long from = json.get("from").longValue();
+    	Long to = json.get("to").longValue();
     	//Create when no id is delivered
     	if(json.get("id")==null){
 				event = Event.create(name, desc, from, to);
@@ -92,42 +92,42 @@ public class Application extends Controller {
     	Long id = Long.parseLong(json.get("id").textValue());
     	if(Event.find.byId(id) != null){
 				event = Event.update(id, name, desc, from, to);
-				status.put(STATUS, "updated");   	
+				status.put(STATUS, "updated");
 		    	return ok(status);
     	}
     	else{
-    		status.put(STATUS, "null");   	
+    		status.put(STATUS, "null");
 	    	return ok(status);
     	}
     }
-   
+
     public static Result getEvents(String lang, Long from, Long to, int limit) {
     	List<Event> events = null;
-    	
+
     	if(from!=0 && to!=0){
 			events = Event.getEvents(from, to);
     	}
-    	
+
     	if(from!=0 && to==0){
 			events = Event.getEvents(from);
     	}
-    	
+
     	if(from==0 && to==0){
 			events = Event.getEvents();
-		} 
-    	
+		}
+
     	if(limit!=0 && events!=null && events.size()>0){
     		return ok(Json.toJson(events.subList(0, limit)));
     	}
-    	
+
     	return ok(Json.toJson(events));
     }
-    
+
     public static Result getEvent(Long id) {
-    	Event event = Event.find.byId(id); 	
+    	Event event = Event.find.byId(id);
     	return ok(Json.toJson(event));
     }
-    
+
     public static Result deleteEvent(Long id){
     	ObjectNode status = Json.newObject();
     	Event event = Event.find.byId(id);
@@ -140,6 +140,6 @@ public class Application extends Controller {
     	}
     	return ok(status);
     }
-    
-    
+
+
 }
