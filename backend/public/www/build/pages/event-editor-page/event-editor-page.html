@@ -1,0 +1,69 @@
+<!--
+	Event editor
+-->
+<ion-navbar *navbar>
+	<ion-title>
+		Eventeditor
+	</ion-title>
+	<ion-buttons end>
+		<button (click)="clickedClose()">
+			<ion-icon name="close" isActive=false></ion-icon>
+		</button>
+	</ion-buttons>
+</ion-navbar>
+<!--
+	Page content
+-->
+<ion-content padding class="event-editor-page">
+	<ion-list>
+
+
+
+
+		<!-- Event title -->
+		<ion-item>
+			<ion-label>
+				Title
+			</ion-label>
+			<ion-input [(ngModel)]="eventData.name" type="text"></ion-input>
+		</ion-item>
+
+
+
+
+		<!-- Event date -->
+		<ion-item>
+			<ion-label fixed>
+				From
+			</ion-label>
+			<ion-input [(ngModel)]="fromDate" type="date"></ion-input>
+			<ion-input [(ngModel)]="fromTime" type="time" item-right></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label fixed>
+				To
+			</ion-label>
+			<ion-input [(ngModel)]="toDate" type="date"></ion-input>
+			<ion-input [(ngModel)]="toTime" type="time" item-right></ion-input>
+		</ion-item>
+
+
+
+
+		<!-- Event description -->
+		<ion-item>
+			<ion-label>
+				Description
+			</ion-label>
+			<ion-textarea [(ngModel)]="eventData.desc"></ion-textarea>
+		</ion-item>
+	</ion-list>
+
+
+
+
+	<!-- Save button -->
+	<button full (click)="clickedSave()">
+		Save
+	</button>
+</ion-content>

@@ -1,4 +1,4 @@
 #!/bin/bash
-git pull
+cd $PWD && git pull
 cd frontend && gulp
-git subtree push --prefix backend heroku master
+cd $PWD && git subtree push --prefix backend heroku master

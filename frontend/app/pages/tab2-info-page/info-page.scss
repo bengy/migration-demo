@@ -1,3 +1,11 @@
-.search-page {
-
+.info-page {
+	.info-container{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items:center;
+		align-content:center;
+		padding:8px;
+		text-align: center;
+	}
 }

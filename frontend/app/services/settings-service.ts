@@ -140,7 +140,7 @@ export class SettingsService {
 	public registerUser(userName: string): Promise<boolean> {
 		this.settings.name = userName
 		this.settings.didRegister = true
-		this.didUserAccept()
+		this.userDidAccept()
 		this.saveSettings()
 		return Promise.resolve(true)
 		// return this.http
@@ -155,7 +155,7 @@ export class SettingsService {
 	}
 
 	// accept privacy and usage terms
-	public didUserAccept(){
+	public userDidAccept(){
 		this.settings.didAccept = true
 		this.saveSettings()
 	}

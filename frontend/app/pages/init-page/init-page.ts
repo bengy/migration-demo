@@ -72,7 +72,7 @@ export class InitPage {
 	}
 
 	clickedAccept(){
-		this.settingsService.didUserAccept()
+		this.settingsService.userDidAccept()
 		this.nav.push(TabsPage)
 	}
 }

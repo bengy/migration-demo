@@ -1,14 +1,46 @@
+<!-- Events page header -->
 <ion-navbar *navbar>
-	<ion-title>Events</ion-title>
+	<ion-title>
+		Events
+	</ion-title>
 </ion-navbar>
 
+<!-- Events page -->
 <ion-content padding class="events-page">
-	<div style="display: flex;flex-direction: column;justify-content: center; align-items: center;">
-		<h2>Willkommen!</h2>
-		<p>
-			This site is under construction.
-			Diese Seite befindet sich noch im Aufbau.
-		</p>
-		<img src="/img/placeholder.construction.png">
-	</div>
+	<ion-refresher (refresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	<ion-card *ngFor="#item of eventStream | async">
+
+	  <ion-item >
+	    <ion-icon name="calendar" item-left large></ion-icon>
+	    <h2>{{item.name}}</h2>
+	    <p>{{item.from | date:'medium'}}</p>
+	  </ion-item>
+
+	  <ion-item>
+	  <button primary clear item-left>
+	    <ion-icon name="calendar"></ion-icon>
+	    <div>Add to calendar</div>
+	  </button>
+			<!-- <button primary clear item-left>
+	        <ion-icon name="thumbs-up"></ion-icon>
+	        <div>12 Likes</div>
+	      </button>
+	      <button primary clear item-left>
+	        <ion-icon name="text"></ion-icon>
+	        <div>4 Comments</div>
+	      </button> -->
+
+	      <ion-note item-right>
+	        11h ago
+	      </ion-note>
+	    </ion-item>
+
+	</ion-card>
+
+	<button (click)="clickedAddEvent()" fab fab-right fab-bottom>
+		<ion-icon name="add"></ion-icon>
+	</button>
 </ion-content>

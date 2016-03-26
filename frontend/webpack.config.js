@@ -43,6 +43,7 @@ module.exports = {
 		alias: {
 			'app': path.resolve('app'),
 			'ionic-framework': path.resolve('node_modules/ionic-framework'),
+			'ionic-native': path.resolve('node_modules/ionic-native'),
 			'angular2': path.resolve('node_modules/angular2'),
 			'socket.io': path.resolve('node_modules/socket.io-client'),
 			'moment': path.resolve('node_modules/moment'),

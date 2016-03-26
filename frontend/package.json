@@ -10,6 +10,7 @@
     "gulp-watch": "^4.3.5",
     "gutil": "^1.6.4",
     "ionic-framework": "2.0.0-beta.1",
+    "ionic-native": "^1.1.0",
     "ionicons": "3.0.0-alpha.3",
     "jquery": "^2.2.1",
     "jquery.facedetection": "^2.0.1",
@@ -41,9 +42,6 @@
   ],
   "cordovaPlatforms": [
     "ios",
-    {
-      "platform": "android",
-      "locator": "browser"
-    }
+    "android"
   ]
 }
