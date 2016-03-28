@@ -1,4 +1,9 @@
 #!/bin/bash
-cd $PWD && git pull
-cd frontend && gulp
-cd $PWD && git subtree push --prefix backend heroku master
+
+# Build frontend
+pushd frontend-web
+gulp deploy
+popd
+
+# Deploy on heroku
+git subtree push --prefix backend heroku master

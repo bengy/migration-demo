@@ -3,8 +3,35 @@ md-input-container .md-errors-spacer {
   min-height: 0;
 }
 
+.event-detail-page.ng-enter {
+  animation: scaleUp 0.3s both ease-in;
+}
+@-moz-keyframes scaleUp {
+  from {
+    opacity: 0.3;
+    transform: translateY(10px);
+  }
+}
+@-webkit-keyframes scaleUp {
+  from {
+    opacity: 0.3;
+    transform: translateY(10px);
+  }
+}
+@-o-keyframes scaleUp {
+  from {
+    opacity: 0.3;
+    transform: translateY(10px);
+  }
+}
+@keyframes scaleUp {
+  from {
+    opacity: 0.3;
+    transform: translateY(10px);
+  }
+}
 
-[event-page] {
+event-page {
   display: block;
   height: 100%;
 }
