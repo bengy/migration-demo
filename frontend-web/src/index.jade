@@ -31,7 +31,8 @@ html#app-root(xmlns:ng='http://angularjs.org', lang='en', ng-app='refugee-app')
 
 	//------------------------------
 	//- Body
-	body(ng-view)
+	body
+		div.page(class="{{pageClass}}" ng-view)
 
 
 

@@ -23,12 +23,12 @@ div(layout='column' layout-fill)
 
 	//- Content
 
-	md-tabs(flex, md-stretch-tabs="auto")
+	md-tabs(flex, md-stretch-tabs="auto", md-selected="mainCtrl.currentTab")
 
 
 
 		//- Info tap
-		md-tab(label='Info')
+		md-tab(label='Info', md-on-select="mainCtrl.tabService.setCurrent('main', 0)")
 			md-content.md-padding(layout="column" layout-align="center center")
 				p
 					| This site ist still under construction
@@ -37,5 +37,5 @@ div(layout='column' layout-fill)
 
 
 		//- Event tab
-		md-tab(label='Events')
-			event-page
+		md-tab(label='Events', md-on-select="mainCtrl.tabService.setCurrent('main', 1)")
+			event-page(layout="column")

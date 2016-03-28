@@ -11,7 +11,7 @@
 # Title
 # ------------------------------
 # Declare app level module which depends on filters, and services
-app = angular.module "refugee-app", ["ngRoute", "ngAnimate", "pascalprecht.translate", "ngMaterial"]
+app = angular.module "refugee-app", ["ngRoute", "ngAnimate", "pascalprecht.translate", "ngMaterial", "mdExtension"]
 # app = angular.module "refugee-app", ["ngRoute", "ngAnimate", "pascalprecht.translate", "ui.semantic"]
 
 

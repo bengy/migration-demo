@@ -30,6 +30,7 @@ _          = require 'lodash'
 # ------------------------------
 gulp.task 'coffee', ->
 	gulp.src [
+			'src/script/md-extensions.coffee'
 			'src/index.coffee'
 			'src/**/*.coffee']
 		.pipe plumber()
@@ -58,6 +59,8 @@ gulp.task 'concat', ->
 		'bower_components/angular-messages/angular-messages.min.js'
 		"bower_components/angular-material/angular-material.min.js"
 		'bower_components/angular-translate/angular-translate.min.js'
+		"bower_components/jquery-color/jquery.color.js"
+		"bower_components/velocity/velocity.min.js"
 		]
 		.pipe concat 'bower.js', newLine: ';\n'
 		.pipe gulp.dest 'dist/js/'

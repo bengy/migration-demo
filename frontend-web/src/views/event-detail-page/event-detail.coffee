@@ -15,11 +15,12 @@ app.controller "EventDetailController",
 	class EventDetailController
 
 		# Injection annotation for minimization
-		@$inject: ["EventService", "$location"]
+		@$inject: ["EventService", "$location", "$scope"]
 
 		# Constructor
-		constructor: (@eventService, @location) ->
+		constructor: (@eventService, @location, @scope) ->
 			console.log "Init event detail page"
+			@scope.pageClass = "event-detail-page"
 			today = new Date()
 			today.setSeconds(0)
 			today.setMilliseconds(0)

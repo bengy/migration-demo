@@ -39,3 +39,4 @@ app.service "EventService",
 				if res.status is 200 and res.data.status is "done"
 					e.id = res.data.eventId
 					@eventList.push e
+					return

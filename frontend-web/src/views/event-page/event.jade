@@ -5,14 +5,16 @@
 //- Version 0.0.1-alpha.0
 
 
-md-content.md-padding(layout='column')
+md-content.md-padding()
 	md-card(ng-repeat="event in $ctrl.eventService.eventList")
-		md-card-header
+		md-card-header(style="padding-right:5px")
 			md-card-avatar
 				md-icon.md-avatar-icon date_range
 			md-card-header-text
 				span.md-title {{event.name}}
 				span.md-subhead {{event.from | date:"medium"}}
+			md-button.md-icon-button(ng-click="$ctrl.clickedEditEvent(event)")
+				md-icon.md-avatar-icon(style="color:lightgray") mode_edit
 		//- md-card-title
 		//- 	md-card-title-text
 		//- 		span.md-headline In-card actions
@@ -23,7 +25,7 @@ md-content.md-padding(layout='column')
 		md-card-content
 			p
 				{{event.desc}}
-
-md-button.md-fab.md-fab-bottom-right#add-button(aria-label='Add event', ng-click="$ctrl.clickedNewEvent()")
+//- ng-click="$ctrl.clickedNewEvent()"
+md-button.md-fab.md-fab-bottom-right#add-button(aria-label='Add event', mde-button-ripple="$ctrl.clickedNewEvent()")
 	md-icon add
 

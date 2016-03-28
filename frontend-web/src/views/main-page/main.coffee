@@ -15,11 +15,15 @@ app.controller "MainController",
 	class MainController
 
 		# Injection annotation for minimization
-		@$inject: ["$anchorScroll", "$location", "$timeout", "$log", "$scope", "$http"]
+		@$inject: ["$anchorScroll", "$location", "$timeout", "$log", "$scope", "$http", "TabService"]
 
 		# Constructor
-		constructor: (@anchorScroll, @location, @timeout, @log, @scope, @http) ->
+		constructor: (@anchorScroll, @location, @timeout, @log, @scope, @http, @tabService) ->
 			console.log "Init main page"
+			@scope.pageClass = "main-page"
+			@currentTab = @tabService.getCurrent('main') or 1
 			return
+
+
 
 

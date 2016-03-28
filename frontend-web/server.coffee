@@ -22,6 +22,6 @@ app = express()
 app.use express.static __dirname + "/dist"
 app.use bodyParser.json()
 app.use bodyParser.urlencoded {extended: true}
-app.use (req, res) -> res.redirect "/"
+app.get "/api/v1/events", (req, res) -> res.json [1..10].map -> {"name":"Test", "desc":"Test", "to":1459045020000, "from":1459045020000}
 app.listen (port = process.env.PORT or 4000)
 console.log "Server started on http://localhost:#{port}"
