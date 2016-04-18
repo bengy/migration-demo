@@ -28,3 +28,7 @@ app.component "eventPage",
 			clickedNewEvent: =>
 				console.log "Clicked new event"
 				@location.path "/event-detail"
+
+			clickedEditEvent: (e) =>
+				console.log "Clicked edit:", e
+				@location.url "/event-detail?eventId=#{e.eventId}"

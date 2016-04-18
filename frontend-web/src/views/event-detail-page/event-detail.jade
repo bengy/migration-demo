@@ -41,6 +41,7 @@ div.event-detail(layout='column' layout-fill ng-cloak)
 				label Description
 				textarea(ng-model='eventCtrl.editEvent.desc' md-maxlength='150' rows='5' md-select-on-focus='')
 
+		md-button.md-warn.md-raised(ng-click="eventCtrl.clickedDelete()") Delete
 		md-button.md-primary.md-raised(ng-click="eventCtrl.clickedSave()") Save
 
 					//- md-input-container

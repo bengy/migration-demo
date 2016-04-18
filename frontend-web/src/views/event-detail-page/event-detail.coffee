@@ -19,28 +19,51 @@ app.controller "EventDetailController",
 
 		# Constructor
 		constructor: (@eventService, @location, @scope) ->
-			console.log "Init event detail page"
 			@scope.pageClass = "event-detail-page"
-			today = new Date()
-			today.setSeconds(0)
-			today.setMilliseconds(0)
-			@editEvent =
-				name: ""
-				desc: ""
-				from: today
-				to: today
 
+			# /event-detail?eventId=xxx
+			{eventId} = @location.search()
+
+			# Edit given id
+			if eventId?
+				@eventService.getEventById eventId
+				.then (e) =>
+					@editEvent = e
+					console.log "Editing: ", @editEvent
+			else
+				console.log "Create new event."
+				# Create blank event
+				today = new Date()
+				today.setSeconds(0)
+				today.setMilliseconds(0)
+				@editEvent =
+					name: ""
+					desc: ""
+					from: today
+					to: today
 			return
 
+
+
+
+
+		# Cancel edit
 		clickedCancel: =>
 			@location.path "/"
 
+
+
+
+		# Save event
 		clickedSave: =>
-			eventToSave = {
-				name: @editEvent.name
-				desc: @editEvent.desc
-				to: @editEvent.to.valueOf()
-				from: @editEvent.from.valueOf()
-			}
-			@eventService.saveNewEvent(eventToSave)
+			@eventService.saveEvent(@editEvent)
 			@location.path "/"
+
+
+
+
+		# Use delete button
+		clickedDelete: =>
+			@eventService.deleteEventById(@editEvent.eventId)
+			.then =>
+				@location.path "/"

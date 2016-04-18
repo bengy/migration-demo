@@ -25,7 +25,8 @@ md-content.md-padding()
 		md-card-content
 			p
 				{{event.desc}}
+	p(ng-show="$ctrl.eventService.eventList.length == 0") No events yet....
 //- ng-click="$ctrl.clickedNewEvent()"
-md-button.md-fab.md-fab-bottom-right#add-button(aria-label='Add event', mde-button-ripple="$ctrl.clickedNewEvent()")
+md-button.md-fab.md-fab-bottom-right#add-button(aria-label='Add event', ng-click="$ctrl.clickedNewEvent()")
 	md-icon add
 

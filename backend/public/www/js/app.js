@@ -96,7 +96,9 @@ app.service("EventService", EventService = (function() {
 
   function EventService(http) {
     this.http = http;
-    this.saveNewEvent = bind(this.saveNewEvent, this);
+    this.deleteEventById = bind(this.deleteEventById, this);
+    this.getEventById = bind(this.getEventById, this);
+    this.saveEvent = bind(this.saveEvent, this);
     this.loadEvents = bind(this.loadEvents, this);
     console.log("Init event service");
     this.eventList = [];
@@ -114,14 +116,64 @@ app.service("EventService", EventService = (function() {
     })(this));
   };
 
-  EventService.prototype.saveNewEvent = function(e) {
-    return this.http.post("/api/v1/event", e).then((function(_this) {
+  EventService.prototype.saveEvent = function(e) {
+    var eventToSave;
+    eventToSave = {
+      name: e.name,
+      desc: e.desc,
+      to: e.to.valueOf(),
+      from: e.from.valueOf()
+    };
+    if (e.eventId != null) {
+      eventToSave["eventId"] = "" + e.eventId;
+    }
+    console.log("Saving: ", eventToSave);
+    return this.http.post("/api/v1/event", eventToSave).then((function(_this) {
       return function(res) {
-        console.log("Status: ", res.status);
-        console.log("Response: ", res.data);
+        var ev, i, len, ref, results;
+        console.log("Saved: ", res.data);
         if (res.status === 200 && res.data.status === "done") {
-          e.id = res.data.eventId;
-          _this.eventList.push(e);
+          eventToSave.eventId = res.data.eventId;
+          _this.eventList.push(eventToSave);
+          return;
+        }
+        if (res.status === 200 && res.data.status === "updated") {
+          ref = _this.eventList;
+          results = [];
+          for (i = 0, len = ref.length; i < len; i++) {
+            ev = ref[i];
+            if (ev.eventId = e.eventId) {
+              ev.name = e.name;
+              ev.desc = e.desc;
+              ev.to = e.to;
+              results.push(ev.from = e.from);
+            } else {
+              results.push(void 0);
+            }
+          }
+          return results;
+        }
+      };
+    })(this));
+  };
+
+  EventService.prototype.getEventById = function(id) {
+    return this.http.get("/api/v1/event/" + id).then(function(res) {
+      var e;
+      e = res.data;
+      e.to = new Date(e.to);
+      e.from = new Date(e.from);
+      return e;
+    });
+  };
+
+  EventService.prototype.deleteEventById = function(id) {
+    return this.http["delete"]("/api/v1/event/" + id).then((function(_this) {
+      return function(res) {
+        if (res.status === 200 && res.data.status === "deleted") {
+          return _this.eventList = _this.eventList.filter(function(e) {
+            return e.eventId !== id;
+          });
         }
       };
     })(this));
@@ -163,23 +215,34 @@ app.controller("EventDetailController", EventDetailController = (function() {
   EventDetailController.$inject = ["EventService", "$location", "$scope"];
 
   function EventDetailController(eventService, location, scope1) {
-    var today;
+    var eventId, today;
     this.eventService = eventService;
     this.location = location;
     this.scope = scope1;
+    this.clickedDelete = bind(this.clickedDelete, this);
     this.clickedSave = bind(this.clickedSave, this);
     this.clickedCancel = bind(this.clickedCancel, this);
-    console.log("Init event detail page");
     this.scope.pageClass = "event-detail-page";
-    today = new Date();
-    today.setSeconds(0);
-    today.setMilliseconds(0);
-    this.editEvent = {
-      name: "",
-      desc: "",
-      from: today,
-      to: today
-    };
+    eventId = this.location.search().eventId;
+    if (eventId != null) {
+      this.eventService.getEventById(eventId).then((function(_this) {
+        return function(e) {
+          _this.editEvent = e;
+          return console.log("Editing: ", _this.editEvent);
+        };
+      })(this));
+    } else {
+      console.log("Create new event.");
+      today = new Date();
+      today.setSeconds(0);
+      today.setMilliseconds(0);
+      this.editEvent = {
+        name: "",
+        desc: "",
+        from: today,
+        to: today
+      };
+    }
     return;
   }
 
@@ -188,15 +251,16 @@ app.controller("EventDetailController", EventDetailController = (function() {
   };
 
   EventDetailController.prototype.clickedSave = function() {
-    var eventToSave;
-    eventToSave = {
-      name: this.editEvent.name,
-      desc: this.editEvent.desc,
-      to: this.editEvent.to.valueOf(),
-      from: this.editEvent.from.valueOf()
-    };
-    this.eventService.saveNewEvent(eventToSave);
+    this.eventService.saveEvent(this.editEvent);
     return this.location.path("/");
+  };
+
+  EventDetailController.prototype.clickedDelete = function() {
+    return this.eventService.deleteEventById(this.editEvent.eventId).then((function(_this) {
+      return function() {
+        return _this.location.path("/");
+      };
+    })(this));
   };
 
   return EventDetailController;
@@ -216,6 +280,7 @@ app.component("eventPage", {
     function EventController(eventService, location) {
       this.eventService = eventService;
       this.location = location;
+      this.clickedEditEvent = bind(this.clickedEditEvent, this);
       this.clickedNewEvent = bind(this.clickedNewEvent, this);
       console.log("Init event page");
       return;
@@ -224,6 +289,11 @@ app.component("eventPage", {
     EventController.prototype.clickedNewEvent = function() {
       console.log("Clicked new event");
       return this.location.path("/event-detail");
+    };
+
+    EventController.prototype.clickedEditEvent = function(e) {
+      console.log("Clicked edit:", e);
+      return this.location.url("/event-detail?eventId=" + e.eventId);
     };
 
     return EventController;
