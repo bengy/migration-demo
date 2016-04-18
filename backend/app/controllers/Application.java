@@ -81,15 +81,16 @@ public class Application extends Controller {
     	String desc = json.get("desc").textValue();
     	Long from = json.get("from").longValue();
     	Long to = json.get("to").longValue();
+
     	//Create when no id is delivered
-    	if(json.get("id")==null){
+    	if(json.get("eventId")==null){
 				event = Event.create(name, desc, from, to);
     			status.put(STATUS, "done");
     			status.put("eventId", event.getEventId());
     			return ok(status);
     	}
     	//Update when id is delivered
-    	Long id = Long.parseLong(json.get("id").textValue());
+    	Long id = Long.parseLong(json.get("eventId").textValue());
     	if(Event.find.byId(id) != null){
 				event = Event.update(id, name, desc, from, to);
 				status.put(STATUS, "updated");
