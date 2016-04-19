@@ -117,15 +117,26 @@ public class Application extends Controller {
 			events = Event.getEvents();
 		}
 
+    	if(events == null){
+    		ObjectNode status = Json.newObject();
+    		status.put(STATUS, "null");
+    		return ok(status);
+    	}
+    	
     	if(limit!=0 && events!=null && events.size()>0){
     		return ok(Json.toJson(events.subList(0, limit)));
     	}
-
+    	
     	return ok(Json.toJson(events));
     }
 
     public static Result getEvent(Long id) {
     	Event event = Event.find.byId(id);
+    	if(event == null){
+    		ObjectNode status = Json.newObject();
+    		status.put(STATUS, "null");
+    		return ok(status);
+    	}
     	return ok(Json.toJson(event));
     }
 
