@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import models.Event;
+import models.Request;
 import models.User;
 import play.libs.Json;
 import play.mvc.BodyParser;
@@ -20,6 +21,8 @@ public class Application extends Controller {
         return redirect("/index.html");
     }
 
+//#############USER API################################        
+    
    public static Result getUsers() {
     	List<User> users = User.find.all();
 
@@ -72,6 +75,8 @@ public class Application extends Controller {
     	return ok(status);
     }
 
+//#############EVENT API################################    
+    
     @BodyParser.Of(BodyParser.Json.class)
     public static Result postEvent() {
     	Event event=null;
@@ -153,5 +158,73 @@ public class Application extends Controller {
     	return ok(status);
     }
 
+//#############REQUEST API################################    
+    
+    public static Result getRequests() {
+    	List<Request> request = Request.find.all();
+
+    	return ok(Json.toJson(request));
+    }
+
+    public static Result getRequest(Long id) {
+    	Request request = Request.find.byId(id);
+    	return ok(Json.toJson(request));
+    }
+
+    @BodyParser.Of(BodyParser.Json.class)
+    public static Result postRequest() {
+    	Request request=null;
+    	JsonNode json = request().body().asJson();
+    	ObjectNode status = Json.newObject();
+    	Long requestId = null;
+    	Long replyTo = null;
+    	if(json.has("requestId")){
+    		requestId = Long.parseLong(json.get("requestId").textValue());
+    	}
+    	if(json.has("replyTo")){
+    		replyTo = Long.parseLong(json.get("replyTo").textValue());
+    	}
+    	if(requestId!=null && replyTo==requestId){
+    		status.put(STATUS, "no cycles");
+    		return ok(status);
+    	}
+    	
+    	String title = json.get("title").textValue();
+    	String desc = json.get("desc").textValue();
+    	Long user = Long.parseLong(json.get("user").textValue());
+    	   
+    	
+    	//Create when no id is delivered
+    	if(requestId==null){
+    		 request = Request.create(title, desc, user, replyTo);
+    		 status.put(STATUS, "done");
+    		 status.put("id", request.getRequestId());
+    		 return ok(status);
+    	}
+    	//Update when id is delivered
+    	request = Request.find.byId(requestId);
+    	if(request != null){
+	    	request = request.update(title, desc, user, replyTo);
+	    	status.put(STATUS, "updated");
+	    	return ok(status);
+    	}else{
+    		status.put(STATUS, "null");
+	    	return ok(status);
+    	}
+    }
+
+    public static Result deleteRequest(Long id){
+    	ObjectNode status = Json.newObject();
+    	Request request = Request.find.byId(id);
+    	if(request!=null){
+        	request.deleteDependents();
+    		request.delete();
+    		status.put(STATUS, "deleted");
+    	}
+    	else{
+        	status.put(STATUS, "null");
+    	}
+    	return ok(status);
+    }
 
 }

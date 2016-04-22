@@ -166,3 +166,7 @@ select t0.event_id c0, t0.name c1, t0.desc c2, t0.from_epoch c3, t0.to_epoch c4 
 org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
 Table "PLAY_EVOLUTIONS" not found; SQL statement:
 select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
+04-22 11:34:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "PLAY_EVOLUTIONS" nicht gefunden
+Table "PLAY_EVOLUTIONS" not found; SQL statement:
+select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-172]
