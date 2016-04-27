@@ -22,6 +22,12 @@ GET		/api/v1/request/:id			controllers.Application.getRequest(id: Long)
 POST	/api/v1/request				controllers.Application.postRequest()
 DELETE	/api/v1/request/:id			controllers.Application.deleteRequest(id: Long)
 
+#Info
+GET		/api/v1/infos				controllers.Application.getInfos()
+GET		/api/v1/info/:id			controllers.Application.getInfo(id: Long)
+POST	/api/v1/info				controllers.Application.postInfo()
+DELETE	/api/v1/info/:id			controllers.Application.deleteInfo(id: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file               		controllers.Assets.at(path="/public/www", file)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)

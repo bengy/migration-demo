@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import models.Event;
+import models.Info;
 import models.Request;
 import models.User;
 import play.libs.Json;
@@ -219,6 +220,66 @@ public class Application extends Controller {
     	if(request!=null){
         	request.deleteDependents();
     		request.delete();
+    		status.put(STATUS, "deleted");
+    	}
+    	else{
+        	status.put(STATUS, "null");
+    	}
+    	return ok(status);
+    }
+   
+//#############Info API################################    
+    
+    public static Result getInfos() {
+    	List<Info> info = Info.find.all();
+
+    	return ok(Json.toJson(info));
+    }
+
+    public static Result getInfo(Long id) {
+    	Info info = Info.find.byId(id);
+    	return ok(Json.toJson(info));
+    }
+
+    @BodyParser.Of(BodyParser.Json.class)
+    public static Result postInfo() {
+    	Info info=null;
+    	JsonNode json = request().body().asJson();
+    	ObjectNode status = Json.newObject();
+    	Long infoId = null;
+    	String content = null;
+    	
+    	if(json.has("infoId")){
+    		infoId = Long.parseLong(json.get("infoId").textValue());
+    	}
+
+    	content = json.get("content").textValue();
+ 
+    	
+    	//Create when no id is delivered
+    	if(infoId==null){
+    		 info = Info.create(content);
+    		 status.put(STATUS, "done");
+    		 status.put("id", info.getInfoId());
+    		 return ok(status);
+    	}
+    	//Update when id is delivered
+    	info = Info.find.byId(infoId);
+    	if(info != null){
+    		info = info.updateInfo(content);
+	    	status.put(STATUS, "updated");
+	    	return ok(status);
+    	}else{
+    		status.put(STATUS, "null");
+	    	return ok(status);
+    	}
+    }
+
+    public static Result deleteInfo(Long id){
+    	ObjectNode status = Json.newObject();
+    	Info info = Info.find.byId(id);
+    	if(info!=null){
+    		info.delete();
     		status.put(STATUS, "deleted");
     	}
     	else{
