@@ -1,12 +1,14 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import play.db.ebean.Model;
 
 @Entity
 public class Info extends Model{
 
+	@Id
 	private Long infoId;
 	private String content;
 	private Long time;
