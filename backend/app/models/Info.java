@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,7 +13,7 @@ public class Info extends Model{
 	@Id
 	private Long infoId;
 	private String content;
-	private Long time;
+	private Long timestamp;
 	
 	public static Finder<Long, Info> find = new Finder<Long, Info>(Long.class, Info.class);
 
@@ -23,6 +25,7 @@ public class Info extends Model{
 	public static Info create(String content){
 		Info info = new Info(content);
 		info.save();
+		info.timestamp = new Date().getTime();
 		return info;
 	}
 	
@@ -45,10 +48,10 @@ public class Info extends Model{
 		this.content = content;
 	}
 	public Long getTime() {
-		return time;
+		return timestamp;
 	}
-	public void setTime(Long time) {
-		this.time = time;
+	public void setTime(Long timestamp) {
+		this.timestamp = timestamp;
 	}
 	
 
