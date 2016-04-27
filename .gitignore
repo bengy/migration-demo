@@ -43,3 +43,6 @@ backend/app/db/
 
 # Mac
 .DS_Store
+
+# Tmux session.
+migration.sh

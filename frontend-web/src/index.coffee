@@ -1,4 +1,4 @@
-# Main script for flickstuff landingpage
+# Main script for migration-demo
 #
 # *Author:* Dominique Rau
 # *Version:* 0.0.1-alpha.0
