@@ -12,10 +12,16 @@ create table event (
   constraint pk_event primary key (event_id))
 ;
 
+create table info (
+  info_id                   bigint,
+  content                   varchar(255),
+  time                      bigint)
+;
+
 create table request (
   request_id                bigint not null,
   title                     varchar(255),
-  desc                      varchar(255),
+  info                      varchar(255),
   inserted                  bigint,
   user_client_id            bigint,
   reply_to_request_id       bigint,
@@ -48,6 +54,8 @@ create index ix_request_replyTo_2 on request (reply_to_request_id);
 SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists event;
+
+drop table if exists info;
 
 drop table if exists request;
 
