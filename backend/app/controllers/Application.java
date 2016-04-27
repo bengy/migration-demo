@@ -31,8 +31,16 @@ public class Application extends Controller {
     }
 
     public static Result getUser(Long id) {
-    	User user = User.find.byId(id);
-    	return ok(Json.toJson(user));
+    	User user = null;
+    	user = User.find.byId(id);
+    	
+    	if(user!=null){
+    		return ok(Json.toJson(user));
+    	}
+    	
+    	ObjectNode status = Json.newObject();
+    	status.put(STATUS, "null");
+    	return ok(status);
     }
 
     @BodyParser.Of(BodyParser.Json.class)
@@ -168,8 +176,16 @@ public class Application extends Controller {
     }
 
     public static Result getRequest(Long id) {
-    	Request request = Request.find.byId(id);
-    	return ok(Json.toJson(request));
+    	Request request = null;
+    	request = Request.find.byId(id);
+    	if(request!=null){
+    		return ok(Json.toJson(request));
+    	}
+    	
+    	ObjectNode status = Json.newObject();
+    	status.put(STATUS, "null");
+    	return ok(status);
+    	
     }
 
     @BodyParser.Of(BodyParser.Json.class)
@@ -237,8 +253,16 @@ public class Application extends Controller {
     }
 
     public static Result getInfo(Long id) {
-    	Info info = Info.find.byId(id);
-    	return ok(Json.toJson(info));
+    	Info info = null;
+    	info = Info.find.byId(id);
+    	
+    	if(info!=null){
+    		return ok(Json.toJson(info));
+    	}
+    	
+    	ObjectNode status = Json.newObject();
+    	status.put(STATUS, "null");
+    	return ok(status);
     }
 
     @BodyParser.Of(BodyParser.Json.class)
