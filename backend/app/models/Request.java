@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import play.db.ebean.Model;
 
 @Entity
@@ -15,7 +17,8 @@ public class Request extends Model{
 	@Id
 	private Long requestId;
 	private String title;
-	private String desc;
+	@JsonProperty("desc")
+	private String info;
 	private Long inserted;
 	@OneToOne
 	private User user;
@@ -28,7 +31,7 @@ public class Request extends Model{
 	public Request(String title, String desc, Long inserted, User user, Request replyTo) {
 		super();
 		this.title = title;
-		this.desc = desc;
+		this.info = desc;
 		this.inserted = inserted;
 		this.user = user;
 		this.replyTo = replyTo;
@@ -80,10 +83,10 @@ public class Request extends Model{
 		this.title = title;
 	}
 	public String getDesc() {
-		return desc;
+		return info;
 	}
 	public void setDesc(String desc) {
-		this.desc = desc;
+		this.info = desc;
 	}
 	public Long getInserted() {
 		return inserted;
