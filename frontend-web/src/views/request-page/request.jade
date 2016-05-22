@@ -1,0 +1,31 @@
+//------------------------------
+//- Request list view
+//-
+//- Author Dominique Rau
+//- Version 0.0.1-alpha.0
+
+
+md-content.md-padding()
+	md-card(ng-repeat="request in $ctrl.requestService.requestList")
+		md-card-header(style="padding-right:5px")
+			md-card-avatar
+				md-icon.md-avatar-icon date_range
+			md-card-header-text
+				span.md-title {{request.name}}
+				span.md-subhead {{request.from | date:"medium"}}
+			md-button.md-icon-button(ng-click="$ctrl.clickedEditRequest(request)")
+				md-icon.md-avatar-icon(style="color:lightgray") mode_edit
+		//- md-card-title
+		//- 	md-card-title-text
+		//- 		span.md-headline In-card actions
+		//- 		span.md-subhead Description
+		//- md-card-actions(layout='row' layout-align='start center')
+		//- 	md-button Like
+		//- 	md-button Share
+		md-card-content
+			p
+				{{request.desc}}
+	p(ng-show="$ctrl.requestService.requestList.length == 0") No requests yet....
+md-button.md-fab.md-fab-bottom-right#add-button(aria-label='Add request', ng-click="$ctrl.clickedNewRequest()")
+	md-icon add
+
