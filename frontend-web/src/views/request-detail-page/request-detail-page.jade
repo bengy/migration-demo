@@ -1,0 +1,45 @@
+//------------------------------
+//- Request editor view
+//-
+//- Author Dominique Rau
+//- Version 0.0.1-alpha.0
+
+
+//- Request editor
+div.request-detail(layout='column' layout-fill ng-cloak)
+
+
+
+	//- Navbar
+	md-toolbar
+		.md-toolbar-tools
+			b Request
+			span(flex)
+			md-button(ng-click="requestCtrl.clickedCancel()")
+				| Cancel
+
+
+	//- Container
+	md-content.md-padding(layout='column')
+		.md-inline-form(layout='column')
+
+			md-input-container
+				label Title
+				input(ng-model='requestCtrl.editRequest.name')
+
+			div(layout="row")
+				md-input-container(flex)
+					label From
+					input(ng-model='requestCtrl.editRequest.from', type="date")
+
+				md-input-container(flex)
+					label Time
+					input(ng-model='requestCtrl.editRequest.from', type="time", step="1000")
+
+
+			md-input-container(flex)
+				label Description
+				textarea(ng-model='requestCtrl.editRequest.desc' md-maxlength='150' rows='5' md-select-on-focus='')
+
+		md-button.md-warn.md-raised(ng-click="requestCtrl.clickedDelete()") Delete
+		md-button.md-primary.md-raised(ng-click="requestCtrl.clickedSave()") Save
